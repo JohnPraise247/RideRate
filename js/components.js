@@ -2,7 +2,7 @@ const NavBar = {
 	view:()=>{
 	  return m("[id='navbar-full']",[
       m(".container", 
-        m("nav.navbar.navbar-ct-blue.navbar-transparent.navbar-fixed-top[role='navigation']", 
+        m("nav.navbar.navbar-default.navbar-transparent.navbar-fixed-top[role='navigation']", 
           m(".container",[
               m(".navbar-header",[
                   m("button.navbar-toggle[type='button'][data-toggle='collapse'][data-target='#navbar-collapse']",[
@@ -21,7 +21,7 @@ const NavBar = {
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
                       // m("li", m("a[href='/reg']", "Register")),
-                      m("li", m("a.btn.btn-round.btn-info.btn-fill[href='#/auth']", "Sign in"))
+                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/auth']",m("i.fa.fa-sign-in.mr-2"), "Sign in"))
                     ])
               ])
           ])
@@ -30,7 +30,7 @@ const NavBar = {
       m(".background-container",[
         m(".bg-overlay"),
         m(".motto",[ 
-              m("h1","Ride Smarter"),
+              m("h1","Ride Smarter,"),
               m("h3","Not Harder with ", m("b","RideRate"))
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"
             ]),

@@ -2000,7 +2000,8 @@ input.ct-red + span + label + span.switch-right {
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:hover,
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:focus {
     opacity: .7;
-    background: transparent; }
+/*    background: transparent;*/
+     }
   [class*="navbar-"] .navbar-nav.navbar-nav .open .dropdown-menu > li > a:active {
     opacity: 1; }
   [class*="navbar-"] .navbar-nav .dropdown > a:hover .caret {

@@ -72,8 +72,8 @@ abbr[title] {
 }
 
 b,
-strong {
-  font-weight: bold;
+strong,.strong {
+  font-weight: bold!important;
 }
 
 dfn {
