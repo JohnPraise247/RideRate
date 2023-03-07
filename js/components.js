@@ -312,7 +312,7 @@ const EmptyState = {
   view:()=>{
     return m(".empty",[
               m("i.bx.bx-icon."+(m.route.param("name") == "location"?".bxs-edit-location"
-                :m.route.param("name") == "price"?".bx-purchase-tag"
+                :m.route.param("name") == "rates"?".bx-purchase-tag"
                 :m.route.param("name") == "vehicles"?".bx-car"
                 :null)+".bx-lg.bx-border-circle"),
               m("h5.strong.text-muted-2","No "+m.route.param("name")+" added yet"),
