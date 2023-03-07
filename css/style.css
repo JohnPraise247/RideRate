@@ -1,9 +1,15 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
 body,
 a,
 h1,
 h2,
 h3 {
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
 }
 
 h2.title{
@@ -27,22 +33,21 @@ button{
 }*/
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ffffff88!important
+    color: #ffffff88!important
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #ffffff88!important
+    color: #ffffff88!important
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color: #ffffff88!important
+    color: #ffffff88!important
 }
+
 
 .form-control{
     border:transparent;
 }
-
-
 
 .split{
     display: block;
@@ -63,36 +68,25 @@ button{
     font-size: 11px;
 }
 
-.split > span::before, .split > span::after {
-    background: #585c93;
-}
 .split > span::before {
     margin-right: 15px;
     right: 100%;
 }
+
 .split > span::before, .split > span::after {
-  background: #585c93;
-  content: '';
-/*  height: 1px;*/
-  border: 0;
+    content: '';
+    border: 0;
     border-top: 1px solid #585c93;
-  position: absolute;
-  top: 50%;
-  width: 9999px;
+    position: absolute;
+    top: 50%;
+    width: 9999px;
 }
 
 .split > span::after {
-  left: 100%;
-  margin-left: 15px;
+    left: 100%;
+    margin-left: 15px;
 }
-/*._1rf5 > span::before, ._1rf5 > span::after {
-  background: #ccd0d5;
-  content: '';
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  width: 9999px;
-}*/
+
 
 .background-container{
     position:relative;
@@ -100,7 +94,6 @@ button{
     height:540px;
     top:0;
     left:0;
-/*  font-size: 5em;*/
 }
 
 .bg-overlay{
@@ -110,7 +103,7 @@ button{
     right: 0;
     left:0;
     background-color: #041d3eab;/*#000000aa*/
-    z-index: 5;
+    z-index: -1;
 }
 
 .background-container > .img-src{
@@ -120,7 +113,7 @@ button{
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
-    z-index: -1;
+    z-index: -2;
 }
 
 .background-container .motto{
@@ -187,13 +180,8 @@ button{
 
 
 
-.justify-content-center {
-   justify-content: center !important;
-}
 
-.d-flex{
-    display: flex!important;
-}
+
 
 .bg-white{
     background-color: #fff!important;
@@ -203,10 +191,7 @@ button{
     background-color: transparent!important;
 }
 
-.panel{
-    max-width: 400px;
-    margin: 0 auto;
-}
+
 
 .text-white {
   color: #fff!important;
@@ -216,7 +201,53 @@ nav .text-white:hover {
   color: #3472F7!important;
 }
 
-#login-bg{
+.btn-transparent-50{
+    border-color: #ffffff99!important;
+    color: #ffffffaa;
+}
+
+.btn-transparent-50:hover, .btn-transparent-50:focus{
+    border-color: #ffffff88!important;
+    color: #ffffffcc!important;
+}
+
+.text-muted-2{
+    color: #8a8a8a;
+}
+
+
+/*Bootstrap custom class*/
+.justify-content-between {
+    justify-content: space-between!important;
+}
+.justify-content-center {
+   justify-content: center!important;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.panel{
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 13px;
+}
+
+
+/*boxicons class*/
+.bx-icon {
+    margin: 0 auto;
+    background: #b3d8ff!important;
+    color: #007bff!important;
+    border:transparent;
+}
+
+
+
+
+
+
+
+.bg, .sidebar{
 /*  width: 100%;*/
 /*  margin: auto;*/
 /*  max-width: 525px;*/
@@ -227,10 +258,26 @@ nav .text-white:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url('../images/bg.jpg') no-repeat center;
+  background: url('../images/bg.jpg');
+/*  background: url('../images/bg.jpg') no-repeat center;*/
 /*  box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);*/
 }
 
+
+.empty{
+   margin: 0 auto;
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+   width: 180px;
+   text-align: center;
+   transform: translate(0,120%);
+
+/*align-content: center;*/
+/*align-items: center;*/
+/*align-self: center;*/
+
+}
 
 
 

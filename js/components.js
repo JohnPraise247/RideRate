@@ -1,3 +1,21 @@
+const Input = {
+  view:(vnode)=>{
+    return m("input.form-control.mb-3[type='"+vnode.attrs.type+"'][value=''][placeholder='"+vnode.attrs.placeholder+"']",{
+      oninput:(e)=>{
+        // Auth.setUsername(e.target.value)
+        vnode.attrs.oninput(e)
+    }
+    ,value: vnode.attrs.value
+  })
+    // return m("input.form-control.mb-3[type='"+vnode.attrs.type+"'][value='"+vnode.attrs.value+"'][placeholder='"+vnode.attrs.placeholder+"']")
+  }
+}
+
+
+
+
+
+
 const NavBar = {
 	view:()=>{
 	  return m("[id='navbar-full']",[
@@ -16,12 +34,12 @@ const NavBar = {
               m(".collapse.navbar-collapse[id='navbar-collapse']",[
                   m("ul.nav.navbar-nav",[
                       m("li.active", m("a[href='#']", "Home")),
-                      m("li", m("a[href='/contact-us']", "Contact")),
-                      m("li", m("a[href='/about']", "About")),   
+                      m("li", m("a[href='#/contact-us']", "Contact")),
+                      m("li", m("a[href='#/about']", "About")),   
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
-                      // m("li", m("a[href='/reg']", "Register")),
-                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/auth']",m("i.fa.fa-sign-in.mr-2"), "Sign in"))
+                      m("li", m("a[href='#/signup']", "Register")),
+                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/login']",m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Log in"))
                     ])
               ])
           ])
@@ -126,5 +144,180 @@ const Footer = {
         )
       )
     )
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// DASHBOARD
+const SectionDashboard = {
+  view:()=>{
+    return m("section.sections", 
+            m("div.section-content",[
+                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
+                m("span.text", "Dashboard" )
+              ]),
+            m(".py-5.px-5",[
+              m("h5", "Overview" ),
+              m(".row.mb-1",[
+                m(".container-fluid.mt-3", 
+                  m(".col-sm-6", 
+                    m(".panel.panel-default", 
+                      m(".panel-body",[
+                        m(".d-flex.justify-content-between.align-items-center",[
+                          m("div",[
+                            m("h3","81"),
+                             m(".text-muted-2","Locations")
+                            ]),
+                          m("div",m("i.bx-icon.bx.bx-current-location.bx-lg.bx-border-circle"))
+                        ]),
+                        // m("small.text-muted","In Total")
+                        ]
+                      )
+                    )
+                  )
+                ),
+                m(".container-fluid.mt-3", 
+                  m(".col-sm-6", 
+                    m(".panel.panel-default", 
+                      m(".panel-body",[
+                        m(".d-flex.justify-content-between.align-items-center",[
+                          m("div",[
+                            m("h3","120"),
+                             m(".text-muted-2","Rates")
+                            ]),
+                          m("div",m("i.bx-icon.bx.bx-purchase-tag.bx-lg.bx-border-circle"))
+                        ]),
+                        // m("small.text-muted","In Total")
+                        ]
+                      )
+                    )
+                  )
+                )
+              ]),
+              m(".row.mb-1",[
+                m(".container-fluid.mt-3", 
+                  m(".col-sm-6", 
+                    m(".panel.panel-default", 
+                      m(".panel-body",[
+                        m(".d-flex.justify-content-between.align-items-center",[
+                          m("div",[
+                            m("h3","22"),
+                             m(".text-muted-2","Vehicles")
+                            ]),
+                          m("div",m("i.bx-icon.bx.bx-car.bx-lg.bx-border-circle"))
+                        ]),
+                        // m("small.text-muted","In Total")
+                        ]
+                      )
+                    )
+                  )
+                ),
+                m(".container-fluid.mt-3", 
+                  m(".col-sm-6", 
+                    m(".panel.panel-default", 
+                      m(".panel-body",[
+                        m(".d-flex.justify-content-between.align-items-center",[
+                          m("div",[
+                            m("h3","8"),
+                             m(".text-muted-2","Users")
+                            ]),
+                          m("div",m("i.bx-icon.bx.bx-user.bx-lg.bx-border-circle"))
+                        ]),
+                        // m("small.text-muted","In Total")
+                        ]
+                      )
+                    )
+                  )
+                )
+              ])
+              
+            ])
+            
+             
+             )
+  }
+}
+
+
+
+// Copyright © Your Website 2021
+// Privacy Policy
+// ·
+// Terms & Conditions
+
+
+const SectionLocation = {
+  view:()=>{
+    return m("section.sections", 
+            m("div.section-content",[
+                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
+                m("span.text", "Location" )
+              ]),
+             m(EmptyState))
+  }
+}
+
+const SectionRates = {
+  view:()=>{
+    return m("section.sections", 
+            m("div.section-content",[
+                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
+                m("span.text", "Rates" )
+              ]),
+             m(EmptyState))
+  }
+}
+
+const SectionVehicles = {
+  view:()=>{
+    return m("section.sections", 
+             m("div.section-content",[
+                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
+                m("span.text", "Vehicles entry" )
+              ]),
+             m(EmptyState)
+          )
+  }
+}
+
+const SectionNotFound = {
+  view:()=>{
+    return m("section.sections", 
+            m("div.section-content",[
+                m("i.bx.bx-menu"),
+                m("span.text", "Error 404" )
+              ]),
+            m(".empty",[
+              m("i.bx.bx-icon.bx-search-alt.bx-lg.bx-border-circle"),
+              m("h5.strong.text-muted-2","This requested URL was not found on this server."),
+              m("button.btn.btn-primary.btn-fill",{onclick:()=>{
+                m.route.set("/u/dashboard")
+              }},[m("i.bx.bx-left-arrow-alt[style='position: relative;top: 2px;']"),"Goto Dashboard"])
+        ])
+            )
+  }
+}
+
+const EmptyState = {
+  view:()=>{
+    return m(".empty",[
+              m("i.bx.bx-icon."+(m.route.param("name") == "location"?".bxs-edit-location"
+                :m.route.param("name") == "price"?".bx-purchase-tag"
+                :m.route.param("name") == "vehicles"?".bx-car"
+                :null)+".bx-lg.bx-border-circle"),
+              m("h5.strong.text-muted-2","No "+m.route.param("name")+" added yet"),
+              m("button.btn.btn-primary.btn-fill",[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
+        ])
+          
   }
 }
