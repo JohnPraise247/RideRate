@@ -256,6 +256,8 @@ const SectionDashboard = {
 // Terms & Conditions
 
 
+
+// SECTIONS
 const SectionLocation = {
   view:()=>{
     return m("section.sections", 
@@ -263,7 +265,8 @@ const SectionLocation = {
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
                 m("span.text", "Location" )
               ]),
-             m(EmptyState))
+             Model.location.list == null?m(EmptyState):m(Locations)
+             )
   }
 }
 
@@ -316,7 +319,7 @@ const EmptyState = {
                 :m.route.param("name") == "vehicles"?".bx-car"
                 :null)+".bx-lg.bx-border-circle"),
               m("h5.strong.text-muted-2","No "+m.route.param("name")+" added yet"),
-              m("button.btn.btn-primary.btn-fill",[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
+              m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.location.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
         ])
           
   }
@@ -324,53 +327,17 @@ const EmptyState = {
 
 
 
-const BottomSheet = {
+
+
+
+
+const Locations ={
   view:()=>{
-    return m(".c-bottom-sheet.c-bottom-sheet--list[id='language-selector']",
-  [
-    m("div.c-bottom-sheet__scrim"),
-    m("div.c-bottom-sheet__sheet",
-      [
-        m("div.c-bottom-sheet__handle",
-          [
-            m("span"),
-            m("span")
-          ]
-        ),
-        m("ul.c-bottom-sheet__list",
-          [
-            m("li.c-bottom-sheet__item.active", 
-              m("a.c-bottom-sheet__link[href='#']", 
-                "JavaScript"
-              )
-            ),
-            m("li.c-bottom-sheet__item", 
-              m("a.c-bottom-sheet__link[href='']", 
-                "CSS/CSS3"
-              )
-            ),
-            m("li.c-bottom-sheet__item", 
-              m("a.c-bottom-sheet__link[href='']", 
-                "HTML5/XML"
-              )
-            ),
-            m("li.c-bottom-sheet__item", 
-              m("a.c-bottom-sheet__link[href='']", 
-                "Angular.js"
-              )
-            ),
-            m("li.c-bottom-sheet__item", 
-              m("a.c-bottom-sheet__link[href='']", 
-                "React.js"
-              )
-            )
-          ]
-        )
-      ]
-    ),
-    m("div.c-bottom-sheet__container", 
-    )
-  ]
-)
+    return m(".px-3",[
+      m(".input-group.mt-5",[
+        m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
+        m("span.input-group-addon",m("i.bx.bx-search-alt"))
+      ])
+    ])
   }
 }

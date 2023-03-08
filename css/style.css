@@ -18,10 +18,7 @@ h2.title{
     font-weight: 600!important;
 }
 
-input{
-    background: rgba(255,255,255,.1)!important;
-    color: #fff!important;
-}
+
 
 button{
     white-space: break-spaces!important;
@@ -32,20 +29,29 @@ button{
     border-top: 1px solid #585c93;
 }*/
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.form-group > .form-control{
+    background: rgba(255,255,255,.1);
+    color: #fff!important;
+}
+
+.form-group > .form-control:focus{
+    border:solid 1px #ffffff66 !important;
+}
+
+.form-group > .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ffffff88!important
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.form-group > .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #ffffff88!important
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+.form-group > .form-control::-ms-input-placeholder { /* Microsoft Edge */
     color: #ffffff88!important
 }
 
 
-.form-control{
+.form-group > .form-control{
     border:transparent;
 }
 
@@ -239,6 +245,29 @@ nav .text-white:hover {
     background: #b3d8ff!important;
     color: #007bff!important;
     border:transparent;
+}
+
+/*Sweetalert custom class*/
+.swal2-popup {
+    border-radius: 13px !important;
+}
+#swal-input1, #swal-input2 {
+    margin: 5px !important;
+    width: 130px;
+    color: #000!important;
+}
+#swal2-html-container .form-control {
+   display: inline !important;
+   border: solid 1px #888 !important;
+}
+#swal2-html-container > .form-control:focus{
+    border:solid 1px #007bff !important;
+    box-shadow: none;
+}
+#swal2-html-container > .form-control input::placeholder, 
+#swal2-html-container > .form-control input:-ms-input-placeholder, 
+#swal2-html-container > .form-control input::-ms-input-placeholder{
+    color: #888 !important;
 }
 
 
