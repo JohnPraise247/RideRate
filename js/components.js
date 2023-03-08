@@ -321,3 +321,56 @@ const EmptyState = {
           
   }
 }
+
+
+
+const BottomSheet = {
+  view:()=>{
+    return m(".c-bottom-sheet.c-bottom-sheet--list[id='language-selector']",
+  [
+    m("div.c-bottom-sheet__scrim"),
+    m("div.c-bottom-sheet__sheet",
+      [
+        m("div.c-bottom-sheet__handle",
+          [
+            m("span"),
+            m("span")
+          ]
+        ),
+        m("ul.c-bottom-sheet__list",
+          [
+            m("li.c-bottom-sheet__item.active", 
+              m("a.c-bottom-sheet__link[href='#']", 
+                "JavaScript"
+              )
+            ),
+            m("li.c-bottom-sheet__item", 
+              m("a.c-bottom-sheet__link[href='']", 
+                "CSS/CSS3"
+              )
+            ),
+            m("li.c-bottom-sheet__item", 
+              m("a.c-bottom-sheet__link[href='']", 
+                "HTML5/XML"
+              )
+            ),
+            m("li.c-bottom-sheet__item", 
+              m("a.c-bottom-sheet__link[href='']", 
+                "Angular.js"
+              )
+            ),
+            m("li.c-bottom-sheet__item", 
+              m("a.c-bottom-sheet__link[href='']", 
+                "React.js"
+              )
+            )
+          ]
+        )
+      ]
+    ),
+    m("div.c-bottom-sheet__container", 
+    )
+  ]
+)
+  }
+}
