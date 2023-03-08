@@ -34,16 +34,30 @@ var Auth = {
 }
 
 var Model ={
+    transparent:true,
     sidebar:"",
     sidebarBtn:""
 }
 
-var initSidebar = () =>{
-    // let sidebar = document.querySelector(".sidebar");
-    //     let sidebarBtn = document.querySelector(".bx-menu");
-    //     sidebarBtn.addEventListener("click", ()=>{
-    //       sidebar.classList.toggle("close-sidebar");
-    //     });
-}
+// Navbar scroll
+$(document).scroll(function() {
+    if( $(this).scrollTop() > 150 ) {
+        if(Model.transparent) {
+            Model.transparent = false;
+            $('nav[role="navigation"]').removeClass('navbar-transparent');
+        }
+    } else {
+        if( !Model.transparent ) {
+            Model.transparent = true;
+            $('nav[role="navigation"]').addClass('navbar-transparent');
+        }
+    }
+});
+
+// $(window).scroll(function(e) {
+//     oVal = ($(window).scrollTop() / 170);
+//     $(".bg-overlay").css("backdrop", "blur("+oVal+"px)");
+    
+// });
 
 // Model.hideComment(comment).then(m.redraw)
