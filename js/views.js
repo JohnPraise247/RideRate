@@ -3,6 +3,7 @@ const Home = {
 		$("body").removeClass("bg")
 	},
 	view:()=>{
+		initViewport()
 		return [
 			m(NavBar),
 			m(Main),
@@ -34,6 +35,7 @@ const Login = {
 		$("body").addClass("bg")
 	},
 	view:()=>{
+		initViewport()
 		return [
 				m(".container[style='transform: translate(0,20%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
@@ -69,6 +71,7 @@ const Signup = {
 		$("body").addClass("bg")
 	},
 	view:()=>{
+		initViewport()
 		return [
 				m(".container[style='transform: translate(0,22%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
@@ -94,6 +97,7 @@ const ForgotPwd = {
 		$("body").addClass("bg")
 	},
 	view:()=>{
+		initViewport()
 		return [
 			m("#bg",[
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
@@ -120,6 +124,7 @@ const PageNotFound = {
 		$("body").removeClass("bg")
 	},
 	view:()=>{
+		initViewport()
 		return [
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
 				   m("h1.title","Error 404"),
@@ -134,6 +139,8 @@ const PageNotFound = {
 const Dashboard = {
 	oncreate:()=>{
 		$("body").removeClass("bg");
+		// $("head").prepend('<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no">')
+		// $("head").prepend("<meta content='width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")//force fullscreen for mobile
 
 		/*let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {
@@ -146,6 +153,7 @@ const Dashboard = {
         Model.sidebarBtn = document.querySelector(".bx-menu");
 	},
 	view:()=>{
+		initViewport()
 		return [
            m(".sidebar.close-sidebar",[
               m(".logo-details",[
@@ -226,21 +234,10 @@ m.route(document.body, "/", {
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
-    // "/u/": Dashboard,
-    "/u/:name": Dashboard,
-    // "/dashboard/:name": Dashboard,
-    "/:404...": PageNotFound,
-
-
-    //hidden routes
-    // "/user/:id": {
-    //     onmatch: function(args) {
-    //         return Model.checkViewable(args.id).then(function(viewable) {
-    //             return viewable ? UserView : m.route.SKIP
-    //         })
-    //     },
-    // },
-
+    "/u/:name": {onmatch: function() {
+          return Auth.username!="" ?Dashboard : Login
+        }},
+    "/:404...": PageNotFound
     // onmatch: function() {
     //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
     //         else return Home

@@ -263,9 +263,13 @@ const SectionLocation = {
     return m("section.sections", 
             m("div.section-content",[
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Location" )
+                m("span.text", "Location" ),
+                Model.location.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
+                  Model.addNew()
+                }},[m("i.bx.bx-plus[style='position: relative;top: 2px;']"),"Add"])
+                :null
               ]),
-             Model.location.list == null?m(EmptyState):m(Locations)
+             Model.location.list.length == 0?m(EmptyState):m(Locations)
              )
   }
 }
@@ -318,8 +322,18 @@ const EmptyState = {
                 :m.route.param("name") == "rates"?".bx-purchase-tag"
                 :m.route.param("name") == "vehicles"?".bx-car"
                 :null)+".bx-lg.bx-border-circle"),
-              m("h5.strong.text-muted-2","No "+m.route.param("name")+" added yet"),
-              m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.location.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
+              m.route.param("name") == "location"?m("h5.strong.text-muted-2","No location added yet")
+              :m.route.param("name") == "rates"?(
+                Model.location.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bxs-edit-location.bx-sm.mr-2"),"location first to proceed"]):m("h5.strong.text-muted-2","No Rates added yet")
+              ):m.route.param("name") == "vehicles"?(
+                Model.location.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bxs-edit-location.bx-sm.mr-2"),"location first to proceed"]):m("h5.strong.text-muted-2","No Vehicles added yet")
+              )
+              :null,
+              m.route.param("name") == "rates" || m.route.param("name") == "vehicles"?(
+                Model.location.list.length != 0?m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
+                :null
+              )
+              :m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"]),
         ])
           
   }
@@ -337,7 +351,25 @@ const Locations ={
       m(".input-group.mt-5",[
         m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
-      ])
+      ]),
+
+
+      m(".list-group.mt-5",[
+        Model.location.list.map((i)=>{
+          return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
+                    m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
+                    m(".w-100.d-flex[style='flex-direction:column']",[
+                       m("h5.list-group-item-heading",i[0]),
+                       m("small.text-muted", i[1])
+                    ])  
+                  ])
+        })
+
+
+  ]
+)
+
+
     ])
   }
 }

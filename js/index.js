@@ -1,14 +1,14 @@
 //Todo 
 
-// fix li hover for nav
+//fix li hover for nav
 //add indictor to show tab is active
 //fix route to redirect /u/ to /u/dashbaord
 
 
 var Auth = {
-    username: "",
+    username: "JohnDoe",
     phonenumber: "",
-    password: "",
+    password: "12341234",
     setUsername: function(value) {
         Auth.username = value
     },
@@ -38,42 +38,71 @@ var Model ={
     sidebar:"",
     sidebarBtn:"",
     location:{
-        list:null,
-        addNew:()=>{
-        if(m.route.param("name") == "location"){
-           Swal.fire({
-           // const { value: formValues } = await Swal.fire({
-               titleText: 'New Location',
-               html:
-                 '<input id="swal-input1" class="swal2-input form-control" placeholder="From">' +
-                 '<input id="swal-input2" class="swal2-input form-control" placeholder="To">',
-               focusConfirm: false,
-               preConfirm: () => {
-                 Model.location.list = 1
-                 m.redraw()
-                 return [
-                   console.log(document.getElementById('swal-input1').value,document.getElementById('swal-input2').value)
-                 ]
-               },
-               confirmButtonText:"Add new Location",
-               showCancelButton: true,
-               confirmButtonColor:"#007bff",
-               reverseButtons:true,
-               buttonsStyling:false,
-               customClass: {
-                confirmButton: "btn btn-sm btn-fill btn-primary",
-                cancelButton:"btn btn-sm btn-primary mr-2"
-               }
-               // ,footer:"cool"
-            })
-       
-         // if (formValues) {
-         //  Swal.fire(JSON.stringify(formValues))
-         // }
+        list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
+    },
+    addNew:()=>{
+           if(m.route.param("name") == "location"){
+              Swal.fire({
+                  titleText: 'New Location',
+                  html:
+                    '<input id="swal-input1" class="swal2-input form-control" placeholder="From">' +
+                    '<input id="swal-input2" class="swal2-input form-control" placeholder="To">',
+                  focusConfirm: false,
+                  preConfirm: () => {
+                    return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
+                  },
+                  confirmButtonText:"Add new Location",
+                  showCancelButton: true,
+                  confirmButtonColor:"#007bff",
+                  reverseButtons:true,
+                  buttonsStyling:false,
+                  // allowEnterKey:true,
+                  // focusConfirm:true,
+                  customClass: {
+                   confirmButton: "btn btn-sm btn-fill btn-primary",
+                   cancelButton:"btn btn-sm btn-primary mr-2"
+                  }
+                  // ,footer:"cool"
+               })
+        }else if(m.route.param("name") == "rates"){
+            Swal.fire({
+                  titleText: 'New Rate',
+                  html:
+                    '<div class="form-group"><select class="form-control" id="SelectLocation"></select></div>' +
+                    '<input id="swal-input1" class="swal2-input form-control" placeholder="Price 1">' +
+                    '<input id="swal-input2" class="swal2-input form-control" placeholder="Price 2(Optional)">',
+                  focusConfirm: false,
+                  preConfirm: () => {
+                    // Model.location.list.push([document.getElementById('swal-input1').value+" to "+document.getElementById('swal-input2').value,"No Descriptions . . ."])
+                    // m.redraw()
+                  },
+                  confirmButtonText:"Add new Rate",
+                  showCancelButton: true,
+                  confirmButtonColor:"#007bff",
+                  reverseButtons:true,
+                  buttonsStyling:false,
+                  customClass: {
+                   confirmButton: "btn btn-sm btn-fill btn-primary",
+                   cancelButton:"btn btn-sm btn-primary mr-2"
+                  },
+                  didOpen:()=>{
+                    for(i in Model.location.list){
+                        $("#SelectLocation").append('<option>'+Model.location.list[i][0]+'</option>')
+                    }
+                  }
+               })
+
         }
     }
-  }
-    
+}
+
+
+//Force dashboard to show desktop view for mobile devices
+const initViewport = () =>{
+    $("meta[name=viewport]").remove()
+    m.route.param("name")!=undefined?$("head").prepend("<meta content='width=device-width, initial-scale=0.1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")//force fullscreen for mobile
+    :$("head").prepend("<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")
+    m.redraw()
 }
 
 // Navbar scroll
@@ -91,19 +120,17 @@ $(document).scroll(function() {
     }
 });
 
-jQuery(document).ready(function($) {
-
+//Close modal onback key
+$(document).ready(function($) {
   if (window.history && window.history.pushState) {
-
-    // window.history.pushState('forward', null, './#forward');
-
     $(window).on('popstate', function() {
-        Swal.isVisible()?Swal.close():null 
-      // alert('Back button was pressed.');
+        Swal.isVisible()?Swal.close():null
     });
-
   }
 });
+
+
+
 
 // $(window).scroll(function(e) {
 //     oVal = ($(window).scrollTop() / 170);
