@@ -1,7 +1,6 @@
 //Todo 
 
 //fix li hover for nav
-//add indictor to show tab is active
 //fix route to redirect /u/ to /u/dashbaord
 
 
@@ -76,6 +75,9 @@ var Model ={
                     '<input id="swal-input2" class="swal2-input form-control" type="number" placeholder="Price 2(Optional)">',
                   focusConfirm: false,
                   preConfirm: () => {
+                    // return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
+                  
+                    console.log($("#swal-input1").val())
                     // Model.location.list.push([document.getElementById('swal-input1').value+" to "+document.getElementById('swal-input2').value,"No Descriptions . . ."])
                     // m.redraw()
                   },

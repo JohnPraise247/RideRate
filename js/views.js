@@ -122,7 +122,7 @@ const Dashboard = {
           });
         }*/     
 	},
-	view:()=>{
+	view:(vnode)=>{
 		initViewport()
 		return [
            m(".sidebar.close-sidebar",[
@@ -133,28 +133,28 @@ const Dashboard = {
               m(".bg-overlay"),
               m("ul.nav-links",[
                   m("li",[
-                      m("a[href='#/u/dashboard']",[
+                      m("a"+(m.route.param("name") == "dashboard"?".active-tab":"")+"[href='#/u/dashboard']",[
                           m("i.bx.bx-grid-alt"),
                           m("span.link_name", "Dashboard")
                         ]),
                       m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard")))
                     ]),
                   m("li",[
-                      m("a[href='#/u/location']",[
+                      m("a"+(m.route.param("name") == "location"?".active-tab":"")+"[href='#/u/location']",[
                           m("i.bx.bxs-edit-location"),
                           m("span.link_name", "Location")
                         ]),
                       m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))
                     ]),
                   m("li",[
-                      m("a[href='#/u/rates']",[
+                      m("a"+(m.route.param("name") == "rates"?".active-tab":"")+"[href='#/u/rates']",[
                           m("i.bx.bx-purchase-tag"),
                           m("span.link_name", "Rates")
                         ]),
                       m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates")))
                     ]),
                   m("li",[
-                      m("a[href='#/u/vehicles']",[
+                      m("a"+(m.route.param("name") == "vehicles"?".active-tab":"")+"[href='#/u/vehicles']",[
                           m("i.bx.bx-car"),
                           m("span.link_name", "Vehicles")
                         ]),
