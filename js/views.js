@@ -1,9 +1,8 @@
+//HomePage
 const Home = {
-	oncreate:()=>{
-		$("body").removeClass("bg")
-	},
-	view:()=>{
-		initViewport()
+	oncreate:() =>{ $("body").removeClass("bg") },
+	view:() =>{
+		initViewport();
 		return [
 			m(NavBar),
 			m(Main),
@@ -12,28 +11,8 @@ const Home = {
 	}
 }
 
-const ContactUs = {
-	oncreate:()=>{
-		$("body").removeClass("bg")
-	},
-	view:()=>{
-		return m("div","contact-us")
-	}
-}
-
-const About = {
-	oncreate:()=>{
-		$("body").removeClass("bg")
-	},
-	view:()=>{
-		return m("div","about")
-	}
-}
-
 const Login = {
-	oncreate:()=>{
-		$("body").addClass("bg")
-	},
+	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
 		initViewport()
 		return [
@@ -51,8 +30,8 @@ const Login = {
                           	 }})
                        ),
                        m("button.btn.btn-primary.btn-fill.w-100.strong",{
-                        	disabled: !Auth.canSubmit(),
-                            onclick: Auth.login
+                        	 disabled: !Auth.canSubmit(),
+                           onclick: Auth.login
                        },"Log in"),
                        m(".text-center.py-2",m("small.text-center.mt-3",m("a[href='#/forgot-pwd']","Forgot Password?"))),
                        m(".split", m("span.or", "or")),
@@ -67,9 +46,7 @@ const Login = {
 }
 
 const Signup = {
-	oncreate:()=>{
-		$("body").addClass("bg")
-	},
+	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
 		initViewport()
 		return [
@@ -93,9 +70,7 @@ const Signup = {
 
 
 const ForgotPwd = {
-	oncreate:()=>{
-		$("body").addClass("bg")
-	},
+	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
 		initViewport()
 		return [
@@ -120,9 +95,7 @@ const ForgotPwd = {
 }
 
 const PageNotFound = {
-	oncreate:()=>{
-		$("body").removeClass("bg")
-	},
+	oncreate:()=>{ $("body").removeClass("bg") },
 	view:()=>{
 		initViewport()
 		return [
@@ -139,18 +112,15 @@ const PageNotFound = {
 const Dashboard = {
 	oncreate:()=>{
 		$("body").removeClass("bg");
-		// $("head").prepend('<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no">')
-		// $("head").prepend("<meta content='width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")//force fullscreen for mobile
-
+		Model.sidebar = document.querySelector(".sidebar");
+    Model.sidebarBtn = document.querySelector(".bx-menu");
 		/*let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {
           arrow[i].addEventListener("click", (e)=>{
              let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
              arrowParent.classList.toggle("showMenu");
           });
-        }*/
-        Model.sidebar = document.querySelector(".sidebar");
-        Model.sidebarBtn = document.querySelector(".bx-menu");
+        }*/     
 	},
 	view:()=>{
 		initViewport()
@@ -172,7 +142,7 @@ const Dashboard = {
                   m("li",[
                       m("a[href='#/u/location']",[
                           m("i.bx.bxs-edit-location"),
-                          m("span.link_name", "Location Entry")
+                          m("span.link_name", "Location")
                         ]),
                       m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))
                     ]),
@@ -186,7 +156,7 @@ const Dashboard = {
                   m("li",[
                       m("a[href='#/u/vehicles']",[
                           m("i.bx.bx-car"),
-                          m("span.link_name", "Vehicles Entry")
+                          m("span.link_name", "Vehicles")
                         ]),
                       m("ul.sub-menu.blank", m("li", m("a.link_name[href='#/u/vehicles]", "Vehicles entry")))
                     ]),
@@ -219,23 +189,21 @@ const Dashboard = {
            :m.route.param("name") == "location"?m(SectionLocation)
            :m.route.param("name") == "rates"?m(SectionRates)
            :m.route.param("name") == "vehicles"?m(SectionVehicles)
-           :m(SectionNotFound)
-          
+           :m(SectionNotFound)        
        ]
 	}
 }
 
-m.route.prefix= "#"
 
+// Routes
+m.route.prefix= "#"
 m.route(document.body, "/", {
     "/": Home,
-    "/contact-us": ContactUs,
-    "/about": About,
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
     "/u/:name": {onmatch: function() {
-          return Auth.username!="" ?Dashboard : Login
+          return Auth.username != "" ? Dashboard : Login
         }},
     "/:404...": PageNotFound
     // onmatch: function() {

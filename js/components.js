@@ -2,13 +2,11 @@ const Input = {
   view:(vnode)=>{
     return m("input.form-control.mb-3[type='"+vnode.attrs.type+"'][value=''][placeholder='"+vnode.attrs.placeholder+"']",{
       oninput:(e)=>{
-        // Auth.setUsername(e.target.value)
         vnode.attrs.oninput(e)
-    }
-    ,value: vnode.attrs.value
-  })
-    // return m("input.form-control.mb-3[type='"+vnode.attrs.type+"'][value='"+vnode.attrs.value+"'][placeholder='"+vnode.attrs.placeholder+"']")
-  }
+      },
+      value: vnode.attrs.value
+   })
+ }
 }
 
 
@@ -49,8 +47,12 @@ const NavBar = {
         m(".bg-overlay"),
         m(".motto",[ 
               m("h1","Ride Smarter,"),
-              m("h3","Not Harder with ", m("b","RideRate"))
-              // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"
+              m("h3","Not Harder with ", m("b","RideRate")),
+              m(".mt-5",[
+                m("a.btn.btn-primary.btn-fill.m-3[href='#']","Get Started"),
+                m("button.btn.btn-white.m-3","Check Rates")
+              ])
+              // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
             ]),
           m(".img-src", {"style":{"background-image":"url('images/bg.jpg')"}})
         ]
@@ -62,64 +64,78 @@ const NavBar = {
 
 const Main = {
 	view:()=>{
-	  return m("div.main", 
-      m("section.section",
-      m(".container.tim-container", 
+	  return m(".main", 
+      m("section.section-spacing",
+      m(".container", 
         m(".d-flex.justify-content-center", 
           m("h2.section-heading", "Save your time using RideRate")
         ),
-        m("div.row",
-  [
-    m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='']", 
-      m("div.feature-1.text-center",
-        [
-          m("div.wrap-icon.icon-1", 
-            m("i.bi.bi-people")
-          ),
-          m("h3.mb-3", 
-            "Real-Time Updates"
-          ),
-          m("p", 
-            "Get accurate and up-to-date information on transportation fares"
+        m(".mt-5.row",[
+           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='']", 
+             m(".text-center",
+               [
+                 m("div.wrap-icon.icon-1", m("i.bx.bx-refresh")),
+                 m("h3.mb-3", "Real-Time Updates"),
+                 m("p", "Get accurate and up-to-date information on transportation fares" )
+               ]
+             )
+           ),
+           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='100']", 
+             m(".text-center",
+               [
+                 m("div.wrap-icon.icon-1",m("i.bx.bx-sun")),
+                 m("h3.mb-3", "Multiple Transportation Options"),
+                 m("p", "Find and compare prices for a variety of transportation options, including taxis, ride-sharing services, public transit, and more.")
+               ]
+             )
+           ),
+           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='200']", 
+             m(".text-center",
+               [
+                 m(".wrap-icon.icon-1", m("i.bx.bx-time")),
+                 m("h3.mb-3", "Save Time"),
+                 m("p", "Avoid the hassle of manually checking fares by using RideRate to get real-time updates.")
+               ]
+             )
+           )
+         ])
+       ) 
+      ),//Mobile ap download section
+      m("section.section-spacing.cta-section", 
+        m(".container", 
+          m(".row.align-items-center",[
+              m(".col-md-6.mr-auto.text-center.mb-5", 
+                m("h2[style='font-weight:600']", 
+                  "Get our mobile App"
+                )
+              ),
+              m(".col-md-6.text-center.pt-3", 
+                m("p",
+                  [
+                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#']",
+                      [
+                        m("i.bx.bxl-apple"),
+                        m("span", 
+                          "App store"
+                        )
+                      ]
+                    ),
+                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#']",
+                      [
+                        m("i.bx.bxl-play-store"),
+                        m("span", 
+                          "Google play"
+                        )
+                      ]
+                    )
+                  ]
+                )
+              )
+            ]
           )
-        ]
-      )
-    ),
-    m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='100']", 
-      m("div.feature-1.text-center",
-        [
-          m("div.wrap-icon.icon-1", 
-            m("i.bi.bi-brightness-high")
-          ),
-          m("h3.mb-3", 
-            "Multiple Transportation Options"
-          ),
-          m("p", 
-            "Find and compare prices for a variety of transportation options, including taxis, ride-sharing services, public transit, and more."
-          )
-        ]
-      )
-    ),
-    m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='200']", 
-      m("div.feature-1.text-center",
-        [
-          m("div.wrap-icon.icon-1", 
-            m("i.bi.bi-bar-chart")
-          ),
-          m("h3.mb-3", 
-            "Save Time"
-          ),
-          m("p", 
-            "Avoid the hassle of manually checking fares by using RideRate to get real-time updates."
-          )
-        ]
-      )
-    )
-  ]
+  )
 )
 
-       ) 
-      )
     )
 	}
 }
@@ -129,9 +145,9 @@ const Main = {
 
 const Footer = {
   view:()=>{
-    return m("div.footer", 
-      m("div.overlayer", 
-        m("div.container", 
+    return m(".footer", 
+      m(".overlayer", 
+        m(".grey.text-center.container", 
           m("div.row", 
             m("div.credits",
               [
@@ -263,7 +279,7 @@ const SectionLocation = {
     return m("section.sections", 
             m("div.section-content",[
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Location" ),
+                m("span.text", "Location Entry" ),
                 Model.location.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
                   Model.addNew()
                 }},[m("i.bx.bx-plus[style='position: relative;top: 2px;']"),"Add"])
@@ -279,9 +295,10 @@ const SectionRates = {
     return m("section.sections", 
             m("div.section-content",[
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Rates" )
+                m("span.text", "Rates Entry" )
               ]),
-             m(EmptyState))
+             Model.rates.list.length == 0?m(EmptyState):m(Rates)
+            )
   }
 }
 
@@ -290,7 +307,7 @@ const SectionVehicles = {
     return m("section.sections", 
              m("div.section-content",[
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Vehicles entry" )
+                m("span.text", "Vehicles Entry" )
               ]),
              m(EmptyState)
           )
@@ -345,15 +362,37 @@ const EmptyState = {
 
 
 
-const Locations ={
+const Locations = {
   view:()=>{
     return m(".px-3",[
       m(".input-group.mt-5",[
         m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
       ]),
+      m(".list-group.mt-5",[
+        Model.location.list.map((i)=>{
+          return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
+                    m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
+                    m(".w-100.d-flex[style='flex-direction:column']",[
+                       m("h5.list-group-item-heading",i[0]),
+                       m("small.text-muted", i[1])
+                    ])  
+                  ])
+        })
+
+      ])
+    ])
+  }
+}
 
 
+const Rates = {
+  view:()=>{
+    return m(".px-3",[
+      m(".input-group.mt-5",[
+        m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
+        m("span.input-group-addon",m("i.bx.bx-search-alt"))
+      ]),
       m(".list-group.mt-5",[
         Model.location.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[

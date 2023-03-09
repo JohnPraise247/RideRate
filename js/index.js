@@ -40,13 +40,16 @@ var Model ={
     location:{
         list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
     },
+    rates:{
+        list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
+    },
     addNew:()=>{
            if(m.route.param("name") == "location"){
               Swal.fire({
                   titleText: 'New Location',
                   html:
-                    '<input id="swal-input1" class="swal2-input form-control" placeholder="From">' +
-                    '<input id="swal-input2" class="swal2-input form-control" placeholder="To">',
+                    '<input id="swal-input1" class="swal2-input form-control" type="text" placeholder="From">' +
+                    '<input id="swal-input2" class="swal2-input form-control" type="text" placeholder="To">',
                   focusConfirm: false,
                   preConfirm: () => {
                     return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
@@ -68,9 +71,9 @@ var Model ={
             Swal.fire({
                   titleText: 'New Rate',
                   html:
-                    '<div class="form-group"><select class="form-control" id="SelectLocation"></select></div>' +
-                    '<input id="swal-input1" class="swal2-input form-control" placeholder="Price 1">' +
-                    '<input id="swal-input2" class="swal2-input form-control" placeholder="Price 2(Optional)">',
+                    '<div class="form-group"><select class="form-control" id="SelectLocation"><option disabled>Select a location</option></select></div>' +
+                    '<input id="swal-input1" class="swal2-input form-control" type="number" placeholder="Price 1">' +
+                    '<input id="swal-input2" class="swal2-input form-control" type="number" placeholder="Price 2(Optional)">',
                   focusConfirm: false,
                   preConfirm: () => {
                     // Model.location.list.push([document.getElementById('swal-input1').value+" to "+document.getElementById('swal-input2').value,"No Descriptions . . ."])
