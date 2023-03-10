@@ -331,6 +331,19 @@ select.form-control {
     margin: 0 auto;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
 }
+.name-icon{
+    width: 36px;
+    height: 36px;
+    padding: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
 
 
 /*Sweetalert custom class*/

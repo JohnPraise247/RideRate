@@ -151,7 +151,7 @@ const Dashboard = {
                           m("i.bx.bx-purchase-tag"),
                           m("span.link_name", "Rates")
                         ]),
-                      m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates")))
+                      m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry")))
                     ]),
                   m("li",[
                       m("a"+(m.route.param("name") == "vehicles"?".active-tab":"")+"[href='#/u/vehicles']",[

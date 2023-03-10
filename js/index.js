@@ -75,9 +75,11 @@ var Model ={
                     '<input id="swal-input2" class="swal2-input form-control" type="number" placeholder="Price 2(Optional)">',
                   focusConfirm: false,
                   preConfirm: () => {
-                    // return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
+                    return ($("#swal-input1").val().trim().length > 0 && $("#swal-input2").val().trim().length > 0)? Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()+" to ₦"+$("#swal-input2").val()])
+                           :($("#swal-input1").val().trim().length > 0)? Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()])
+                           :false
                   
-                    console.log($("#swal-input1").val())
+                    // console.log($("#SelectLocation").val())
                     // Model.location.list.push([document.getElementById('swal-input1').value+" to "+document.getElementById('swal-input2').value,"No Descriptions . . ."])
                     // m.redraw()
                   },
@@ -92,7 +94,7 @@ var Model ={
                   },
                   didOpen:()=>{
                     for(i in Model.location.list){
-                        $("#SelectLocation").append('<option>'+Model.location.list[i][0]+'</option>')
+                        $("#SelectLocation").append("<option value='"+Model.location.list[i][0]+"'>"+Model.location.list[i][0]+"</option>")
                     }
                   }
                })

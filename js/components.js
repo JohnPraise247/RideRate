@@ -100,7 +100,7 @@ const Main = {
            )
          ])
        ) 
-      ),//Mobile ap download section
+      ),//Mobile app download section
       m("section.section-spacing.cta-section", 
         m(".container", 
           m(".row.align-items-center",[
@@ -295,7 +295,11 @@ const SectionRates = {
     return m("section.sections", 
             m("div.section-content",[
                 m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Rates Entry" )
+                m("span.text", "Rates Entry" ),
+                Model.rates.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
+                  Model.addNew()
+                }},[m("i.bx.bx-plus[style='position: relative;top: 2px;']"),"Add"])
+                :null
               ]),
              Model.rates.list.length == 0?m(EmptyState):m(Rates)
             )
@@ -372,7 +376,8 @@ const Locations = {
       m(".list-group.mt-5",[
         Model.location.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
-                    m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
+                    m(".name-icon",i[0].split("to")[0].charAt(0).toUpperCase() + i[0].slice(i[0].indexOf("to")+2).charAt(1).toUpperCase() ),
+                    // m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i[0]),
                        m("small.text-muted", i[1])
@@ -390,13 +395,13 @@ const Rates = {
   view:()=>{
     return m(".px-3",[
       m(".input-group.mt-5",[
-        m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
+        m("input.form-control.bg-white[type='text'][placeholder='Search Rates']"),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
       ]),
       m(".list-group.mt-5",[
-        Model.location.list.map((i)=>{
+        Model.rates.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
-                    m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
+                    m(".name-icon",i[0].split("to")[0].charAt(0).toUpperCase() + i[0].slice(i[0].indexOf("to")+2).charAt(1).toUpperCase() ),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i[0]),
                        m("small.text-muted", i[1])
