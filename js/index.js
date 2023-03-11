@@ -100,6 +100,41 @@ var Model ={
                })
 
         }
+    },
+    edit:(value,desc)=>{
+        if(m.route.param("name") == "location"){
+              Swal.fire({
+                  titleText: 'Edit Location',
+                  html:
+                    '<input id="swal-input1" class="swal2-input form-control" type="text" placeholder="From" value='+value.slice(0,value.indexOf(" ")).trim()+'>' +
+                    '<input id="swal-input2" class="swal2-input form-control" type="text" placeholder="To" value='+value.slice(value.lastIndexOf(" ")).trim()+'>',
+                  focusConfirm: false,
+                  preConfirm: () => {
+                    let temp = []
+                    Model.location.list.forEach((i,j)=>{
+                        // console.log(i)
+                        // console.log(value)
+                        // console.log(i[j])
+                        i[j] == value?temp.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),desc]):temp.push([i,desc])
+                    })
+                    // Model.location.list = temp
+                    // console.log(temp)
+                    // return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
+                  },
+                  confirmButtonText:"Add new Location",
+                  showCancelButton: true,
+                  confirmButtonColor:"#007bff",
+                  reverseButtons:true,
+                  buttonsStyling:false,
+                  // allowEnterKey:true,
+                  // focusConfirm:true,
+                  customClass: {
+                   confirmButton: "btn btn-sm btn-fill btn-primary",
+                   cancelButton:"btn btn-sm btn-primary mr-2"
+                  }
+                  // ,footer:"cool"
+               })
+        }
     }
 }
 

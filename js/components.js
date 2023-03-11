@@ -375,13 +375,18 @@ const Locations = {
       ]),
       m(".list-group.mt-5",[
         Model.location.list.map((i)=>{
-          return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
-                    m(".name-icon",i[0].split("to")[0].charAt(0).toUpperCase() + i[0].slice(i[0].indexOf("to")+2).charAt(1).toUpperCase() ),
+          return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{
+            Model.edit(i[0],i[1])
+          }},[
+                    m(".name-icon",i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
                     // m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i[0]),
                        m("small.text-muted", i[1])
-                    ])  
+                    ]),
+                    m("small.text-muted",(Model.rates.list.length > 0?(
+                      i[0] == Model.rates.list[0][0]?Model.rates.list[0][1]:"???"
+                      ):("")))
                   ])
         })
 
@@ -401,7 +406,7 @@ const Rates = {
       m(".list-group.mt-5",[
         Model.rates.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
-                    m(".name-icon",i[0].split("to")[0].charAt(0).toUpperCase() + i[0].slice(i[0].indexOf("to")+2).charAt(1).toUpperCase() ),
+                    m(".name-icon",i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i[0]),
                        m("small.text-muted", i[1])
