@@ -32,8 +32,11 @@ const NavBar = {
               m(".collapse.navbar-collapse[id='navbar-collapse']",[
                   m("ul.nav.navbar-nav",[
                       m("li.active", m("a[href='#']", "Home")),
-                      m("li", m("a[href='#/contact-us']", "Contact")),
-                      m("li", m("a[href='#/about']", "About")),   
+                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
+                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
+                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
+                      // m("li", m("a[href='#/contact-us']", "Features")),
+                      // m("li", m("a[href='#/about']", "Contact")),   
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
                       m("li", m("a[href='#/signup']", "Register")),
@@ -49,7 +52,8 @@ const NavBar = {
               m("h1","Ride Smarter,"),
               m("h3","Not Harder with ", m("b","RideRate")),
               m(".mt-5",[
-                m("a.btn.btn-primary.btn-fill.m-3[href='#']","Get Started"),
+                m("a.btn.btn-primary.btn-fill.m-3",{ onclick:()=>{ window.scrollToAnchor("features") }},"Get Started"),
+                // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
                 m("button.btn.btn-white.m-3","Check Rates")
               ])
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
@@ -64,7 +68,7 @@ const NavBar = {
 
 const Main = {
 	view:()=>{
-	  return m(".main", 
+	  return m("#features.main",
       m("section.section-spacing",
       m(".container", 
         m(".d-flex.justify-content-center", 

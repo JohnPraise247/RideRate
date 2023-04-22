@@ -3,6 +3,8 @@
 /fontawesome
 /css/bootstrap.css
 /css/g.css
+/css/gsdk - Copy.css
+/css/gsdk-edit.css
 /js/bootstrap.bundle.min.js
 /js/jquery-ui-1.10.4.custom.min.js
 /js/gsdk.js
@@ -11,3 +13,8 @@
 /js/gsdk-bootstrapswitch.js
 /Popup Modal Box
 /bottom-sheet-master
+/web-app
+/node_modules
+package.json
+.gitignore
+index.js

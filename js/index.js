@@ -2,14 +2,21 @@
 
 //fix li hover for nav
 //fix route to redirect /u/ to /u/dashbaord
+//Desktop View for signin and login has duplicate background
+//ADd AOS
+//blm th backgnd (background issues on mobile )
+//add auto suggest on input
 
-
+anchor=""
 var Auth = {
     username: "JohnDoe",
     phonenumber: "",
     password: "12341234",
     setUsername: function(value) {
         Auth.username = value
+    },
+    setPhonenumber: function(value) {
+        Auth.phonenumber = value
     },
     setPassword: function(value) {
         Auth.password = value
@@ -21,15 +28,33 @@ var Auth = {
         //make request
         setTimeout("m.route.set('/u/dashboard')")
 
-       /* m.request({
-            url: "/api/v1/auth",
-            params: {username: Auth.username, password: Auth.password}
+        // m.request({
+        //     method: "GET",
+        //     url: "http://localhost:3000/api/users",
+        //     // url: "/api/v1/auth",
+        //     params: {username: Auth.username, password: Auth.password}
+        //     // body: {name: "test"}
+        // }).then(function(data) {
+        //     // xc=data
+        //     console.log(data)
+        //     // localStorage.setItem("auth-token", data.token)
+        //     // m.route.set("/secret")
+        // }).catch(function(e) {
+        //         console.log(e.message)
+        //     })
+    },signup: function() {
+        m.request({
+            method: "POST",
+            url: "http://localhost:3000/users",
+            params: {username: Auth.username, phonenumber: Auth.phonenumber, password: Auth.password}
         }).then(function(data) {
             console.log(data)
             // localStorage.setItem("auth-token", data.token)
             // m.route.set("/secret")
-        })*/
-    },
+        }).catch(function(e) {
+                console.log(e.message)
+            })
+    }
 }
 
 var Model ={
@@ -162,6 +187,20 @@ $(document).scroll(function() {
     }
 });
 
+function scrollToAnchor( anchorName ){
+    let is = (el)=>{return el !== undefined && el !== null};
+    let targetEl = is(anchor) ? document.querySelector("div[id='"+anchorName+"']") : document.body;
+    // let targetEl = is(anchor) ? document.querySelector(anchorName) : document.body;
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let target = is(targetEl) ? targetEl.getBoundingClientRect().top : 0;
+    window.scroll({
+        top: target + scrollTop - 70,
+        left: 0,
+        behavior: "smooth"
+    });
+}
+
+
 //Close modal onback key
 $(document).ready(function($) {
   if (window.history && window.history.pushState) {
@@ -174,11 +213,11 @@ $(document).ready(function($) {
 
 
 
-// $(window).scroll(function(e) {
-//     oVal = ($(window).scrollTop() / 170);
-//     $(".bg-overlay").css("backdrop", "blur("+oVal+"px)");
+$(window).scroll(function(e) {
+    oVal = ($(window).scrollTop() / 30);
+    $(".img-src").css("filter", "blur("+oVal+"px)");
     
-// });
+});
 
 // Model.hideComment(comment).then(m.redraw)
 // const Toast = Swal.mixin({

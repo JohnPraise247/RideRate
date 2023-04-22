@@ -16,6 +16,7 @@ const Login = {
 	view:()=>{
 		initViewport()
 		return [
+				// m(".container[style='transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;']",[
 				m(".container[style='transform: translate(0,20%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
 				    m(".panel.img-rounded.p-4.bg-transparent",[
@@ -54,12 +55,23 @@ const Signup = {
 					m("h2.title","RideRate"),
 				    m(".panel.img-rounded.p-4.bg-transparent",[
 					   m("p.text-white.py-3.text-center","Create a new RideRate account"),
-	    	           m("div.form-group", 
-	    	              m("input.form-control.mb-3[type='text'][value=''][placeholder='Username']"),
-	    	              m("input.form-control.mb-3[type='text'][value=''][placeholder='Phone Number']"),
-                          m("input.form-control.mb-3[type='password'][value=''][placeholder='Password']")
+	    	           m(".form-group", 
+	    	           	  m(Input,{type:"text",placeholder:"Username or Phone Number",value: Auth.username,oninput:(e)=>{ 
+                          	 Auth.setUsername(e.target.value)
+                         }}),
+                      m(Input,{type:"tel",placeholder:"Phone Number",value: Auth.phonenumber,oninput:(e)=>{ 
+                          	 Auth.setPhonenumber(e.target.value)
+                         }}),
+                      m(Input,{type:"password",placeholder:"Password",value: Auth.password,oninput:(e)=>{ 
+                          	 Auth.setPassword(e.target.value)
+                         }}),
+	    	              // m("input.form-control.mb-3[type='text'][value=''][placeholder='Username']"),
+	    	              // m("input.form-control.mb-3[type='text'][value=''][placeholder='Phone Number']"),
+                      //     m("input.form-control.mb-3[type='password'][value=''][placeholder='Password']")
                        ),
-                       m("button.btn.btn-primary.btn-fill.w-100.strong","Sign Up"),
+                       m("button.btn.btn-primary.btn-fill.w-100.strong",{
+                       	onclick:  Auth.signup
+                       },"Sign Up"),
                        m(".text-center.py-3",m("small.text-center.mt-3",m("a[href='#/login']","Already have an account?")))
 				  ])
 				]),
