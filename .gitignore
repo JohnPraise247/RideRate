@@ -19,7 +19,7 @@
 /bottom-sheet-master
 /web-app
 /node_modules
-/boxicons
+./boxicons
 package.json
 /.gitignore
 /index.js
