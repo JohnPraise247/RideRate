@@ -2,7 +2,6 @@
 const Home = {
 	oncreate:() =>{ $("body").removeClass("bg") },
 	view:() =>{
-		initViewport();
 		return [
 			m(NavBar),
 			m(Main),
@@ -14,7 +13,6 @@ const Home = {
 const Login = {
 	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
-		initViewport()
 		return [
 				// m(".container[style='transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;']",[
 				m(".container[style='transform: translate(0,20%);z-index:9;position:relative']",[
@@ -49,7 +47,6 @@ const Login = {
 const Signup = {
 	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
-		initViewport()
 		return [
 				m(".container[style='transform: translate(0,22%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
@@ -84,7 +81,6 @@ const Signup = {
 const ForgotPwd = {
 	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
-		initViewport()
 		return [
 			m("#bg",[
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
@@ -109,7 +105,6 @@ const ForgotPwd = {
 const PageNotFound = {
 	oncreate:()=>{ $("body").removeClass("bg") },
 	view:()=>{
-		initViewport()
 		return [
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
 				   m("h1.title","Error 404"),
