@@ -140,7 +140,7 @@ const Dashboard = {
           m("span.logo_name", "RideRate")
         ]),
       m("ul.nav-links",[
-          m("li", 
+          m("li.showMenu", 
             m("a"+(m.route.param("name") == "dashboard"?".active":"")+"[href='#/u/dashboard']",[
                 m("i.bx.bx-grid-alt"),
                 m("span.links_name", "Dashboard")
@@ -152,19 +152,22 @@ const Dashboard = {
                 m("i.bx.bx-current-location"),
                 m("span.links_name", "Location")
               ]
-            )
+            ),
+            m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))
           ),
           m("li", m("a"+(m.route.param("name") == "rates"?".active":"")+"[href='#/u/rates']",[
                 m("i.bx.bx-purchase-tag"),
                 m("span.links_name", "Rates")
               ]
-            )
+            ),
+           m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry")))
           ),
           m("li", m("a"+(m.route.param("name") == "vehicles"?".active":"")+"[href='#/u/vehicles']",[
                 m("i.bx.bx-car"),
                 m("span.links_name", "Vehicles")
               ]
-            )
+            ),
+          m("ul.sub-menu.blank", m("li", m("a.link_name[href='#/u/vehicles]", "Vehicles entry")))
           ),
           // m("li", m("a[href='#']",[
           //       m("i.bx.bx-cog"),

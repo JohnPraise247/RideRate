@@ -259,7 +259,7 @@ nav .text-white:hover {
 .section-container{
   position: relative;
   top: 65px;
-  padding: 3rem;
+  padding: 3rem 1.6rem;
 }
 .section-content{
   display: flex;
@@ -490,7 +490,6 @@ select.form-control {
     width: 36px;
     height: 36px;
     padding: 20px;
-    background: #007bff;
     border-radius: 50%;
     color: #fff;
     font-weight: 600;
@@ -498,6 +497,18 @@ select.form-control {
     justify-content: center;
     align-items: center;
     margin-right: 15px;
+}
+.icon-blue{
+    background: #007bff;
+}
+.icon-green{
+    background: #2BD47D;
+}
+.icon-red{
+    background: #e05260;
+}
+.icon-yellow{
+    background: #ffc233;
 }
 
 

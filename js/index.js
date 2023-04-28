@@ -61,8 +61,20 @@ var Model ={
     transparent:true,
     sidebar:"",
     sidebarBtn:"",
+    colorIndex:-1,//controls how colors are picked
+    colorClasses:[".icon-blue",".icon-green",".icon-yellow",".icon-red"],
     location:{
-        list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
+        list:[
+            ["Oye/Ikole to Lagos","No Description . . ."],
+            ["Oye/Ikole to Ogun","No Description . . ."],
+            ["Oye/Ikole to Ondo","No Description . . ."],
+            ["Oye/Ikole to Abuja","No Description . . ."],
+            ["Oye/Ikole to Kogi","No Description . . ."],
+            ["Oye/Ikole to Oyo","No Description . . ."],
+            ["Oye/Ikole to Kwara","No Description . . ."],
+            ["Oye/Ikole to Edo","No Description . . ."]
+        ]
+        // list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
     },
     rates:{
         list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
@@ -100,8 +112,8 @@ var Model ={
                     '<input id="swal-input2" class="swal2-input form-control" type="number" placeholder="Price 2(Optional)">',
                   focusConfirm: false,
                   preConfirm: () => {
-                    return ($("#swal-input1").val().trim().length > 0 && $("#swal-input2").val().trim().length > 0)? Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()+" to ₦"+$("#swal-input2").val()])
-                           :($("#swal-input1").val().trim().length > 0)? Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()])
+                    return ($("#swal-input1").val().trim().length > 0 && $("#swal-input2").val().trim().length > 0)? (Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()+" - ₦"+$("#swal-input2").val()]),m.redraw())
+                           :($("#swal-input1").val().trim().length > 0)? (Model.rates.list.push([$("#SelectLocation").val(),"₦"+$("#swal-input1").val()]),m.redraw())
                            :false
                   
                     // console.log($("#SelectLocation").val())
@@ -126,7 +138,8 @@ var Model ={
 
         }
     },
-    edit:(value,desc)=>{
+    edit:(value)=>{
+    // edit:(value,desc)=>{
         if(m.route.param("name") == "location"){
               Swal.fire({
                   titleText: 'Edit Location',
@@ -136,17 +149,20 @@ var Model ={
                   focusConfirm: false,
                   preConfirm: () => {
                     let temp = []
-                    Model.location.list.forEach((i,j)=>{
+                    let newValue = $("#swal-input1").val() +" to "+ $("#swal-input2").val();
+
+                    Model.location.list.forEach((i)=>{
                         // console.log(i)
                         // console.log(value)
                         // console.log(i[j])
-                        i[j] == value?temp.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),desc]):temp.push([i,desc])
+                        i[0] == value?temp.push([newValue,"No Description . . ."]):temp.push([i[0],"No Description . . ."])
                     })
-                    // Model.location.list = temp
+                    Model.location.list = temp
+                    m.redraw()
                     // console.log(temp)
                     // return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
                   },
-                  confirmButtonText:"Add new Location",
+                  confirmButtonText:"Confirm Location",
                   showCancelButton: true,
                   confirmButtonColor:"#007bff",
                   reverseButtons:true,
@@ -160,6 +176,14 @@ var Model ={
                   // ,footer:"cool"
                })
         }
+    },
+    setIconColor:()=>{
+        // Model.colorIndex++;
+        // if(j > 3) j = 0
+        // return Model.colorClasses[j]
+        Model.colorIndex++;
+        if(Model.colorIndex > 3) Model.colorIndex = 0
+        return Model.colorClasses[Model.colorIndex]
     }
 }
 

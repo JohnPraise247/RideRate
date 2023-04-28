@@ -294,14 +294,14 @@ nav .profile-details i{
 }
 @media (max-width: 1150px) {
   .sidebar .nav-links li span{
-  opacity: 1;
-  transition: all 0.4s ease;
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+ .sidebar.active .nav-links li span{
+    opacity: 1;
+    transition: all 0.4s ease;
 }
-.sidebar.active .nav-links li span{
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-  .home-content .sales-boxes{
+  /*.home-content .sales-boxes{
     flex-direction: column;
   }
   .home-content .sales-boxes .box{
@@ -311,14 +311,14 @@ nav .profile-details i{
   }
   .home-content .sales-boxes .top-sales{
     margin: 0;
-  }
+  }*/
 }
-@media (max-width: 1000px) {
+/*@media (max-width: 1000px) {
   .overview-boxes .box{
     width: calc(100% / 2 - 15px);
     margin-bottom: 15px;
   }
-}
+}*/
 @media (max-width: 700px) {
   /*nav .profile-details .admin_name,
   nav .profile-details i{
@@ -328,9 +328,9 @@ nav .profile-details i{
     height: 50px;
     min-width: 40px;
   }
-  .home-content .sales-boxes .sales-details{
+  /*.home-content .sales-boxes .sales-details{
     width: 560px;
-  }
+  }*/
 }
 @media (max-width: 550px) {
 

@@ -246,7 +246,8 @@ const SectionDashboard = {
                       m(".panel-body",[
                         m(".d-flex.justify-content-between.align-items-center",[
                           m("div",[
-                            m("h3","81"),
+                            m("h3",Model.location.list.length),
+                            // m("h3","81"),
                              m(".text-muted-2","Locations")
                             ]),
                           m("div",m("i.bx-icon.bx.bx-one.bx-current-location.bx-lg.bx-border-circle"))
@@ -335,7 +336,7 @@ const SectionLocation = {
               m("div.floating-button", {onclick:()=>{
                 Model.addNew()
               }}, m("i.bx.bx-plus"))
-            ):null
+             ):null
              )
   }
 }
@@ -343,14 +344,12 @@ const SectionLocation = {
 const SectionRates = {
   view:()=>{
     return m("section.section-container", 
-            m("div.section-content",[
-                m("span.text", "Rates Entry" ),
-                Model.rates.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
-                  Model.addNew()
-                }},[m("i.bx.bx-plus[style='position: relative;top: 2px;']"),"Add"])
-                :null
-              ]),
-             Model.rates.list.length == 0?m(EmptyState):m(Rates)
+             Model.rates.list.length == 0?m(EmptyState):m(Rates),
+             Model.rates.list.length != 0?m("div.floating-container", 
+              m("div.floating-button", {onclick:()=>{
+                Model.addNew()
+              }}, m("i.bx.bx-plus"))
+             ):null
             )
   }
 }
@@ -408,26 +407,64 @@ const EmptyState = {
 
 
 const Locations = {
-  view:()=>{
+  oncreate:(vnode)=>{
+    // var input, filter, ul, li, a, i, txtValue;
+    // vnode.state.input = document.getElementById("locationInput");
+    // vnode.state.filter = vnode.state.input.value.toUpperCase();
+    // vnode.state.div = document.getElementById("list-group");
+    // vnode.state.a = vnode.state.div.getElementsByTagName("a");
+
+  },
+  view:(vnode)=>{
     return m(".px-3",[
       m(".input-group.mt-5",[
-        m("input.form-control.bg-white[type='text'][placeholder='Search Locations']"),
+        m("input#locationInput.form-control.bg-white[type='text'][placeholder='Search Locations']",{onkeyup:()=>{
+          vnode.state.input = document.getElementById("locationInput");
+          vnode.state.filter = vnode.state.input.value.toUpperCase();
+          vnode.state.div = document.getElementById("list-group");
+          vnode.state.a = vnode.state.div.getElementsByTagName("a");
+          
+          
+    
+    for (i = 0; i < vnode.state.a.length; i++) {
+        a = vnode.state.a[i].getElementsByTagName("h5")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(vnode.state.filter) > -1) {
+            vnode.state.a[i].classList.remove("d-none");
+            vnode.state.a[i].classList.add("d-flex");
+        } else {
+            vnode.state.a[i].classList.add("d-none");
+            vnode.state.a[i].classList.remove("d-flex");
+        }
+    }
+    m.redraw()
+        }}),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
       ]),
-      m(".list-group.mt-5",[
-        Model.location.list.map((i)=>{
+      m("#list-group.list-group.mt-5",[
+        Model.location.list.map((i,j)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{
-            Model.edit(i[0],i[1])
+            Model.edit(i[0])
+            // Model.edit(i[0],i[1])
           }},[
-                    m(".name-icon",i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
+                    m(".name-icon"+Model.setIconColor(),i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
                     // m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i[0]),
                        m("small.text-muted", i[1])
                     ]),
-                    m("small.text-muted",(Model.rates.list.length > 0?(
-                      i[0] == Model.rates.list[0][0]?Model.rates.list[0][1]:"???"
-                      ):("")))
+                    // console.log(Model.rates.list[0][0]),
+                    // console.log(i[0]),
+                    // m("small.text-muted",(Model.rates.list.length > 0?(
+                    //   i[0] == Model.rates.list[0][j]?Model.rates.list[0][1]:"???"
+                    //   ):("")))
+
+                    /*m("small.text-muted",(Model.rates.list.map((a,b)=>{
+                      return (i[0] == Model.rates.list[b][0]?Model.rates.list[b][1]:"???")
+                      // console.log(a[b])
+                      // console.log(Model.rates.list[b][1])
+                    })
+                    ))*/
                   ])
         })
 
@@ -445,12 +482,12 @@ const Rates = {
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
       ]),
       m(".list-group.mt-5",[
-        Model.rates.list.map((i)=>{
+        Model.rates.list.map((i,j)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",[
-                    m(".name-icon",i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
+                    m(".name-icon"+Model.setIconColor(),i[0].charAt(0).toUpperCase() + i[0].slice(i[0].lastIndexOf("to")+2).charAt(1).toUpperCase() ),
                     m(".w-100.d-flex[style='flex-direction:column']",[
-                       m("h5.list-group-item-heading",i[0]),
-                       m("small.text-muted", i[1])
+                       m("h5.list-group-item-heading",i[1]),
+                       m("small.text-muted", i[0])
                     ])  
                   ])
         })
