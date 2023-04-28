@@ -72,7 +72,7 @@ const Main = {
         m("#about.container", 
           m(".row",[
               m(".col-sm-6.mr-auto.text-center.mb-5", 
-                m("img.d-sm-none[width=55%][src='./images/phone.png']"),
+                m("img.d-sm-none[width=55%][src='./images/mobile_phone.png']"),
               ),
               m(".col-sm-6.pt-3", 
                 m("h6", "About"),
