@@ -31,12 +31,10 @@ const NavBar = {
               ]),
               m(".collapse.navbar-collapse[id='navbar-collapse']",[
                   m("ul.nav.navbar-nav",[
-                      m("li.active", m("a[href='#']", "Home")),
-                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
-                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
-                      m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
-                      // m("li", m("a[href='#/contact-us']", "Features")),
-                      // m("li", m("a[href='#/about']", "Contact")),   
+                      // m("li.active", m("a[href='#']", "Home")),
+                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
+                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
+                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
                       m("li", m("a[href='#/signup']", "Register")),
@@ -52,7 +50,7 @@ const NavBar = {
               m("h1","Ride Smarter,"),
               m("h3","Not Harder with ", m("b","RideRate")),
               m(".mt-5",[
-                m("a.btn.btn-primary.btn-fill.m-3",{ onclick:()=>{ window.scrollToAnchor("features") }},"Get Started"),
+                m("a.btn.btn-primary.btn-fill.m-3",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
                 // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
                 m("button.btn.btn-white.m-3","Check Rates")
               ])
@@ -68,43 +66,72 @@ const NavBar = {
 
 const Main = {
 	view:()=>{
-	  return m("#features.main",
-      m("section.section-spacing",
+	  return m(".main",
+      //About Sections
+      m("section.section-spacing.section-about", 
+        m("#about.container", 
+          m(".row",[
+              m(".col-sm-6.mr-auto.text-center.mb-5", 
+                m("img.d-sm-none[width=55%][src='/images/phone.png']"),
+              ),
+              m(".col-sm-6.pt-3", 
+                m("h6", "About"),
+                m("h3[style='font-weight:600']", "R i d e R a t e"),
+                m("p","RideRate helps you to automate various scheduling activities of the transport system and optimize the use of premium resources. Concerned authorities can easily use the system to set the cost of each journey.The solution, that we are going to provide you, has been especially designed considering the challenges University students come across. Some of these challenges are inadequate information, resource optimization, and stability. Emphasis has been given to easy-to-use interface. The users need not to be programmers or database experts to benefit from this system.")
+              )
+            ]
+          )
+        )
+      ),
+
+
+
+
+      //Features Sections
+      m("section.section-spacing.section-features",
+        m(".bg-overlay-black"),
       m(".container", 
         m(".d-flex.justify-content-center", 
-          m("h2.section-heading", "Save your time using RideRate")
+          m("h3.section-heading", "Save your time using RideRate")
         ),
         m(".mt-5.row",[
-           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='']", 
+           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='']", 
              m(".text-center",
                [
                  m("div.wrap-icon.icon-1", m("i.bx.bx-refresh")),
-                 m("h3.mb-3", "Real-Time Updates"),
-                 m("p", "Get accurate and up-to-date information on transportation fares" )
+                 m("h3.mb-3.text-white", "Real-Time Updates"),
+                 m("p.text-muted", "Get accurate and up-to-date information on transportation fares" )
                ]
              )
            ),
-           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='100']", 
+           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='100']", 
              m(".text-center",
                [
                  m("div.wrap-icon.icon-1",m("i.bx.bx-sun")),
-                 m("h3.mb-3", "Multiple Transportation Options"),
-                 m("p", "Find and compare prices for a variety of transportation options, including taxis, ride-sharing services, public transit, and more.")
+                 m("h3.mb-3.text-white", "Multiple Transportation Options"),
+                 m("p.text-muted", "Find and compare prices for a variety of transportation options, including taxis, ride-sharing services, public transit, and more.")
                ]
              )
            ),
-           m(".col-md-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='200']", 
+           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='200']", 
              m(".text-center",
                [
                  m(".wrap-icon.icon-1", m("i.bx.bx-time")),
-                 m("h3.mb-3", "Save Time"),
-                 m("p", "Avoid the hassle of manually checking fares by using RideRate to get real-time updates.")
+                 m("h3.mb-3.text-white", "Save Time"),
+                 m("p.text-muted", "Avoid the hassle of manually checking fares by using RideRate to get real-time updates.")
                ]
              )
            )
          ])
-       ) 
-      ),//Mobile app download section
+       ),
+      m("div.img-abs[style=background-image: url(images/image_4.jpg)]")
+      // <div style="background-image: url(&quot;images/bg.jpg&quot;); filter: blur(43.8667px);" class="img-src"></div>
+      ),
+
+
+
+
+      //Mobile app download section
       m("section.section-spacing.cta-section", 
         m(".container", 
           m(".row.align-items-center",[
@@ -137,8 +164,8 @@ const Main = {
               )
             ]
           )
-  )
-)
+        )
+      )
 
     )
 	}
@@ -176,18 +203,42 @@ const Footer = {
 
 
 
-
-
 // DASHBOARD
+const Nav = {
+  view:()=>{
+    return m("nav",[
+             m(".sidebar-button",[
+              m("i.bx.bx-menu.sidebarBtn",{onclick:()=>{
+                 Model.sidebar.classList.toggle("active");
+                 Model.sidebar.classList.contains("active")?Model.sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"):Model.sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                }
+              }),
+              m("span.dashboard", (m.route.param("name") == "dashboard"?"Dashboard"
+                                  :m.route.param("name") == "location"?"Location Entry"
+                                  :m.route.param("name") == "rates"?"Rates Entry"
+                                  :m.route.param("name") == "vehicles"?"Vehicles Entry"
+                                  :"Page not found")
+              )
+            ]),
+          // m("div.search-box",
+          //   [
+          //     m("input[type='text'][placeholder='Search...']"),
+          //     m("i.bx.bx-search")
+          //   ]
+          // ),
+          m(".profile-details",m("img[src='images/profile.jpg'][alt='']"))
+        ]
+      )
+  }
+}
+
 const SectionDashboard = {
   view:()=>{
-    return m("section.sections", 
-            m("div.section-content",[
-                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Dashboard" )
-              ]),
-            m(".py-5.px-5",[
-              m("h5", "Overview" ),
+    return  [
+      // m(Nav),
+      // m("div.home-content")
+      m(".section-container",[
+            m("h5", "Overview"),
               m(".row.mb-1",[
                 m(".container-fluid.mt-3", 
                   m(".col-sm-6", 
@@ -198,7 +249,7 @@ const SectionDashboard = {
                             m("h3","81"),
                              m(".text-muted-2","Locations")
                             ]),
-                          m("div",m("i.bx-icon.bx.bx-current-location.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx.bx-one.bx-current-location.bx-lg.bx-border-circle"))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -215,7 +266,7 @@ const SectionDashboard = {
                             m("h3","120"),
                              m(".text-muted-2","Rates")
                             ]),
-                          m("div",m("i.bx-icon.bx.bx-purchase-tag.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-two.bx.bx-purchase-tag.bx-lg.bx-border-circle"))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -234,7 +285,7 @@ const SectionDashboard = {
                             m("h3","22"),
                              m(".text-muted-2","Vehicles")
                             ]),
-                          m("div",m("i.bx-icon.bx.bx-car.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-three.bx.bx-car.bx-lg.bx-border-circle"))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -251,7 +302,7 @@ const SectionDashboard = {
                             m("h3","8"),
                              m(".text-muted-2","Users")
                             ]),
-                          m("div",m("i.bx-icon.bx.bx-user.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-four.bx.bx-user.bx-lg.bx-border-circle"))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -260,11 +311,9 @@ const SectionDashboard = {
                   )
                 )
               ])
-              
-            ])
             
-             
-             )
+          ])
+    ]
   }
 }
 
@@ -280,25 +329,21 @@ const SectionDashboard = {
 // SECTIONS
 const SectionLocation = {
   view:()=>{
-    return m("section.sections", 
-            m("div.section-content",[
-                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Location Entry" ),
-                Model.location.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
-                  Model.addNew()
-                }},[m("i.bx.bx-plus[style='position: relative;top: 2px;']"),"Add"])
-                :null
-              ]),
-             Model.location.list.length == 0?m(EmptyState):m(Locations)
+    return m("section.section-container",
+             Model.location.list.length == 0?m(EmptyState):m(Locations),
+             Model.location.list.length != 0?m("div.floating-container", 
+              m("div.floating-button", {onclick:()=>{
+                Model.addNew()
+              }}, m("i.bx.bx-plus"))
+            ):null
              )
   }
 }
 
 const SectionRates = {
   view:()=>{
-    return m("section.sections", 
+    return m("section.section-container", 
             m("div.section-content",[
-                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
                 m("span.text", "Rates Entry" ),
                 Model.rates.list.length != 0?m("button.btn.btn-primary.btn-fill.ml-auto",{onclick:()=>{
                   Model.addNew()
@@ -312,11 +357,7 @@ const SectionRates = {
 
 const SectionVehicles = {
   view:()=>{
-    return m("section.sections", 
-             m("div.section-content",[
-                m("i.bx.bx-menu",{onclick:()=>{Model.sidebar.classList.toggle("close-sidebar")}}),
-                m("span.text", "Vehicles Entry" )
-              ]),
+    return m("section.section-container", 
              m(EmptyState)
           )
   }
@@ -324,11 +365,7 @@ const SectionVehicles = {
 
 const SectionNotFound = {
   view:()=>{
-    return m("section.sections", 
-            m("div.section-content",[
-                m("i.bx.bx-menu"),
-                m("span.text", "Error 404" )
-              ]),
+    return m("section.section-container", 
             m(".empty",[
               m("i.bx.bx-icon.bx-search-alt.bx-lg.bx-border-circle"),
               m("h5.strong.text-muted-2","This requested URL was not found on this server."),

@@ -76,7 +76,7 @@ var Model ={
                     '<input id="swal-input2" class="swal2-input form-control" type="text" placeholder="To">',
                   focusConfirm: false,
                   preConfirm: () => {
-                    return ($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]):false
+                    return (($("#swal-input1").val().trim().length > 0 && $("#swal-input1").val().trim().length > 0)? (Model.location.list.push([$("#swal-input1").val()+" to "+$("#swal-input2").val(),"No Descriptions . . ."]),m.redraw()):false)
                   },
                   confirmButtonText:"Add new Location",
                   showCancelButton: true,
@@ -165,12 +165,12 @@ var Model ={
 
 
 //Force dashboard to show desktop view for mobile devices
-const initViewport = () =>{
-    $("meta[name=viewport]").remove()
-    m.route.param("name")!=undefined?$("head").prepend("<meta content='width=device-width, initial-scale=0.1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")//force fullscreen for mobile
-    :$("head").prepend("<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")
-    m.redraw()
-}
+// const initViewport = () =>{
+//     $("meta[name=viewport]").remove()
+//     m.route.param("name")!=undefined?$("head").prepend("<meta content='width=device-width, initial-scale=0.1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")//force fullscreen for mobile
+//     :$("head").prepend("<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />")
+//     m.redraw()
+// }
 
 // Navbar scroll
 $(document).scroll(function() {

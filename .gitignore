@@ -5,9 +5,13 @@
 /css/g.css
 /css/gsdk - Copy.css
 /css/gsdk-edit.css
+/css/sidebarx.css
+/css/sidebar2.css
 /js/bootstrap.bundle.min.js
 /js/jquery-ui-1.10.4.custom.min.js
 /js/gsdk.js
+/js/componentsx.js
+/js/viewsX.js
 /js/gsdk-radio.js
 /js/gsdk-checkbox.js
 /js/gsdk-bootstrapswitch.js
@@ -15,6 +19,9 @@
 /bottom-sheet-master
 /web-app
 /node_modules
+/boxicons
 package.json
-.gitignore
-index.js
+/.gitignore
+/index.js
+/Capture.PNG
+/normal users.PNG

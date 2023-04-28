@@ -125,7 +125,10 @@ const Dashboard = {
 	oncreate:()=>{
 		$("body").removeClass("bg");
 		Model.sidebar = document.querySelector(".sidebar");
-    Model.sidebarBtn = document.querySelector(".bx-menu");
+    Model.sidebarBtn = document.querySelector(".sidebarBtn");
+		// Model.sidebar = document.querySelector(".sidebar");
+    // Model.sidebarBtn = document.querySelector(".bx-menu");
+
 		/*let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {
           arrow[i].addEventListener("click", (e)=>{
@@ -135,76 +138,70 @@ const Dashboard = {
         }*/     
 	},
 	view:(vnode)=>{
-		initViewport()
 		return [
-           m(".sidebar.close-sidebar",[
-              m(".logo-details",[
-                  m("i.bx.bx-car"),
-                  m("span.logo_name", "RideRate")
-                ]),
-              m(".bg-overlay"),
-              m("ul.nav-links",[
-                  m("li",[
-                      m("a"+(m.route.param("name") == "dashboard"?".active-tab":"")+"[href='#/u/dashboard']",[
-                          m("i.bx.bx-grid-alt"),
-                          m("span.link_name", "Dashboard")
-                        ]),
-                      m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard")))
-                    ]),
-                  m("li",[
-                      m("a"+(m.route.param("name") == "location"?".active-tab":"")+"[href='#/u/location']",[
-                          m("i.bx.bxs-edit-location"),
-                          m("span.link_name", "Location")
-                        ]),
-                      m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))
-                    ]),
-                  m("li",[
-                      m("a"+(m.route.param("name") == "rates"?".active-tab":"")+"[href='#/u/rates']",[
-                          m("i.bx.bx-purchase-tag"),
-                          m("span.link_name", "Rates")
-                        ]),
-                      m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry")))
-                    ]),
-                  m("li",[
-                      m("a"+(m.route.param("name") == "vehicles"?".active-tab":"")+"[href='#/u/vehicles']",[
-                          m("i.bx.bx-car"),
-                          m("span.link_name", "Vehicles")
-                        ]),
-                      m("ul.sub-menu.blank", m("li", m("a.link_name[href='#/u/vehicles]", "Vehicles entry")))
-                    ]),
-                  /*m("li",[
-                      m("div.iocn-link",[
-                          m("a[href='#']",[
-                              m("i.bx.bx-collection"),
-                              m("span.link_name","Category")
-                            ]),
-                          m("i.bx.bxs-chevron-down.arrow")
-                        ]),
-                      m("ul.sub-menu",[
-                          m("li",m("a.link_name[href='#']", "Category")),
-                          m("li", m("a[href='#']",  "HTML & CSS")),
-                          m("li", m("a[href='#']",  "HTML & CSS")),
-                          m("li", m("a[href='#']",  "HTML & CSS"))
-                        ])
-                    ]),*/
-                  m("li", m("div.profile-details",[
-                        m("div.profile-content", m("img[src='images/profile.jpg'][alt='profileImg']")),
-                        m("div.name-job",[
-                            m("div.profile_name", Auth.username),
-                            m("div.job", "Member")
-                          ]),
-                        m("i.bx.bx-log-out")
-                      ]))
-                ])
-            ]), 
-           m.route.param("name") == "dashboard"?m(SectionDashboard)
-           :m.route.param("name") == "location"?m(SectionLocation)
-           :m.route.param("name") == "rates"?m(SectionRates)
-           :m.route.param("name") == "vehicles"?m(SectionVehicles)
-           :m(SectionNotFound)        
-       ]
+     m(".sidebar",[
+       m(".logo-details",[
+          m("i.bx.bx-car"),
+          m("span.logo_name", "RideRate")
+        ]),
+      m("ul.nav-links",[
+          m("li", 
+            m("a"+(m.route.param("name") == "dashboard"?".active":"")+"[href='#/u/dashboard']",[
+                m("i.bx.bx-grid-alt"),
+                m("span.links_name", "Dashboard")
+              ]
+            ),
+            m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard")))
+          ),
+          m("li", m("a"+(m.route.param("name") == "location"?".active":"")+"[href='#/u/location']",[
+                m("i.bx.bx-current-location"),
+                m("span.links_name", "Location")
+              ]
+            )
+          ),
+          m("li", m("a"+(m.route.param("name") == "rates"?".active":"")+"[href='#/u/rates']",[
+                m("i.bx.bx-purchase-tag"),
+                m("span.links_name", "Rates")
+              ]
+            )
+          ),
+          m("li", m("a"+(m.route.param("name") == "vehicles"?".active":"")+"[href='#/u/vehicles']",[
+                m("i.bx.bx-car"),
+                m("span.links_name", "Vehicles")
+              ]
+            )
+          ),
+          // m("li", m("a[href='#']",[
+          //       m("i.bx.bx-cog"),
+          //       m("span.links_name", "Setting")
+          //     ]
+          //   )
+          // ),
+          m("li.log_out", m("a[href='#']",[
+                m("i.bx.bx-log-out"),
+                m("span.links_name", "Log out")
+              ]
+            )
+          )
+        ]),
+      m(".bg-overlay")
+    ]), 
+     m("section.main-section",[
+     	  m(Nav),
+      	m.route.param("name") == "dashboard"?m(SectionDashboard)
+       :m.route.param("name") == "location"?m(SectionLocation)
+       :m.route.param("name") == "rates"?m(SectionRates)
+       :m.route.param("name") == "vehicles"?m(SectionVehicles)
+       :m(SectionNotFound)
+     ])  
+    ]
 	}
 }
+
+// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard"))),
+// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry"))),
+// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry"))),
+// m("ul.sub-menu.blank", m("li", m("a.link_name[href='#/u/vehicles]", "Vehicles entry")))
 
 
 // Routes
