@@ -185,7 +185,7 @@ const Main = {
 const Footer = {
   view:()=>{
     return m("footer.footer", 
-      m("div.row"+getViewport(1),[
+      m("div"+getViewport(1),[
         m(".col-sm-8",
           m(".container-fluid",
           m("nav", 
