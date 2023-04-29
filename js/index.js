@@ -6,8 +6,9 @@
 //ADd AOS
 //blm th backgnd (background issues on mobile )
 //add auto suggest on input
+//no results found for location search...
 
-anchor=""
+
 var Auth = {
     username: "JohnDoe",
     phonenumber: "",
@@ -58,6 +59,7 @@ var Auth = {
 }
 
 var Model ={
+    anchor:"",//scrollToAnchor
     transparent:true,
     sidebar:"",
     sidebarBtn:"",
@@ -79,6 +81,10 @@ var Model ={
     rates:{
         list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
     },
+    vehicles:{
+        list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
+    },
+    newVehicle: !false,
     addNew:()=>{
            if(m.route.param("name") == "location"){
               Swal.fire({
@@ -136,6 +142,8 @@ var Model ={
                   }
                })
 
+        }else if(m.route.param("name") == "vehicles"){
+            Model.newVehicle = true
         }
     },
     edit:(value)=>{
@@ -213,7 +221,7 @@ $(document).scroll(function() {
 
 function scrollToAnchor( anchorName ){
     let is = (el)=>{return el !== undefined && el !== null};
-    let targetEl = is(anchor) ? document.querySelector("div[id='"+anchorName+"']") : document.body;
+    let targetEl = is(Model.anchor) ? document.querySelector("div[id='"+anchorName+"']") : document.body;
     // let targetEl = is(anchor) ? document.querySelector(anchorName) : document.body;
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     let target = is(targetEl) ? targetEl.getBoundingClientRect().top : 0;
@@ -242,6 +250,14 @@ $(window).scroll(function(e) {
     $(".img-src").css("filter", "blur("+oVal+"px)");
     
 });
+
+$(window).resize(function(){m.redraw()});
+
+const getViewport = (index) =>{
+    if(index == 0){
+        return window.innerWidth < 767? ".text-center":".text-left"
+    }
+}
 
 // Model.hideComment(comment).then(m.redraw)
 // const Toast = Swal.mixin({

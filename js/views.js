@@ -103,7 +103,7 @@ const ForgotPwd = {
 }
 
 const PageNotFound = {
-	oncreate:()=>{ $("body").removeClass("bg") },
+	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
 		return [
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
@@ -212,7 +212,8 @@ m.route(document.body, "/", {
     "/u/:name": {onmatch: function() {
           return Auth.username != "" ? Dashboard : Login
         }},
-    "/:404...": PageNotFound
+    "/:404...": Home
+    // "/:404...": PageNotFound
     // onmatch: function() {
     //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
     //         else return Home
