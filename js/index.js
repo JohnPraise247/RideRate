@@ -7,6 +7,7 @@
 //blm th backgnd (background issues on mobile )
 //add auto suggest on input
 //no results found for location search...
+//fix ugly display for desktop mode on mobile
 
 
 var Auth = {
@@ -256,6 +257,8 @@ $(window).resize(function(){m.redraw()});
 const getViewport = (index) =>{
     if(index == 0){
         return window.innerWidth < 767? ".text-center":".text-left"
+    }else if(index == 1){
+        return window.innerWidth > 769? ".d-flex.align-items-center":""
     }
 }
 

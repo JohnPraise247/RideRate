@@ -1705,8 +1705,8 @@ input.ct-red + span + label + span.switch-right {
     left: auto;
     right: 12px; }
 
-  .footer:not(.footer-big) nav > ul li:first-child {
-    margin-left: 0; }
+  /*.footer:not(.footer-big) nav > ul li:first-child {
+    margin-left: 0; }*/
 
   .nav-open .navbar-collapse {
     -webkit-transform: translate3d(0px, 0, 0);

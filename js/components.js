@@ -184,55 +184,40 @@ const Main = {
 
 const Footer = {
   view:()=>{
-    return m(".footer", 
-      m(".overlayer", 
-        m(".grey.text-center.container", 
-          m("div.row", 
-            m("div.credits",
-              [
-//                 m("nav", 
-//   m("ul",
-//     [
-//       m("li", 
-//         m("a[href='https://www.creative-tim.com/terms'][target='_blank']",
-//           [
-//             " Terms ",
-//             m.trust("&amp;"),
-//             " Conditions "
-//           ]
-//         )
-//       ),
-//       m("li", 
-//         m("a[href='https://www.creative-tim.com/license'][target='_blank']", 
-//           " Licenses "
-//         )
-//       ),
-//       m("li", 
-//         m("a[href='https://www.creative-tim.com/knowledge-center'][target='_blank']", 
-//           " Knowledge Center "
-//         )
-//       ),
-//       m("li", 
-//         m("a[href='https://www.creative-tim.com/affiliates/new'][target='_blank']", 
-//           " Affiliates "
-//         )
-//       ),
-//       m("li", 
-//         m("a[href='https://www.creative-tim.com/blog'][target='_blank']", 
-//           " Blog "
-//         )
-//       )
-//     ]
-//   )
-// ),
-                " © 2023 RideRate. All Rights Reserved"
-                // m("i.fa.fa-heart.heart[alt='love']"),
-                // " for a better web. "
-              ]
-            )
+    return m("footer.footer", 
+      m("div.row"+getViewport(1),[
+        m(".col-sm-8",
+          m(".container-fluid",
+          m("nav", 
+           m("ul.d-flex",[
+             m("li.mr-3", m("a[href='#']", " About us ")),
+             m("li.mr-3", m("a[href='#']", " Privacy Policy ")),
+             m("li.mr-3", m("a[href='#']", " Terms & Conditions ")),
+             m("li.mr-3", m("a[href='#']", " Contact us "))
+          ])
+         )
           )
+        ),
+        m(".col-sm-4",
+          m("div.copyright",[
+          " © 2023 ",
+          m("a[href='/']", "RideRate"),
+          ", All Rights Reserved "
+        ]
+         )
+
+
         )
-      )
-    )
+         
+      /*m("div.social-area.pull-right",[
+          m("a.btn.btn-social.btn-facebook.btn-simple", m("i.fa.fa-facebook-square")),
+          m("a.btn.btn-social.btn-twitter.btn-simple", m("i.fa.fa-twitter")),
+          m("a.btn.btn-social.btn-pinterest.btn-simple", m("i.fa.fa-pinterest"))
+        ]
+      ),*/
+      
+    ]
+  )
+)
   }
 }
