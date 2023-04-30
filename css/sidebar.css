@@ -301,6 +301,7 @@ nav .profile-details i{
     opacity: 1;
     transition: all 0.4s ease;
 }
+
   /*.home-content .sales-boxes{
     flex-direction: column;
   }
@@ -328,6 +329,13 @@ nav .profile-details i{
     height: 50px;
     min-width: 40px;
   }
+  .menu, .footer .copyright {
+  width: 100%;
+  height: unset;
+  line-height: inherit;
+  text-align: center;
+  margin: 0;
+}
   /*.home-content .sales-boxes .sales-details{
     width: 560px;
   }*/
@@ -341,6 +349,7 @@ nav .profile-details i{
   .sidebar.active ~ .main-section nav .profile-details,nav .sidebar-button .dashboard{
     display: none;
   }
+  
 }
 @media (max-width: 400px) {
   .sidebar{

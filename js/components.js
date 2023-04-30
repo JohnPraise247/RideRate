@@ -185,29 +185,26 @@ const Main = {
 const Footer = {
   view:()=>{
     return m("footer.footer", 
-      m("div"+getViewport(1),[
-        m(".col-sm-8",
-          m(".container-fluid",
+      m("div.container-fluid",[
+        m(".menu",
           m("nav", 
            m("ul.d-flex",[
-             m("li.mr-3", m("a[href='#']", " About us ")),
+             // m("li.mr-3", m("a[href='#']", " About us ")),
              m("li.mr-3", m("a[href='#']", " Privacy Policy ")),
-             m("li.mr-3", m("a[href='#']", " Terms & Conditions ")),
-             m("li.mr-3", m("a[href='#']", " Contact us "))
+             m("span.mr-3"," | "),
+             m("li.mr-3", m("a[href='#']", " Terms & Conditions "))
+             // m("li.mr-3", m("a[href='#']", " Contact us "))
           ])
          )
-          )
         ),
-        m(".col-sm-4",
           m("div.copyright",[
-          " © 2023 ",
+          m("span"," © 2023 "),
           m("a[href='/']", "RideRate"),
-          ", All Rights Reserved "
+          m("span",", All Rights Reserved ")
         ]
          )
 
 
-        )
          
       /*m("div.social-area.pull-right",[
           m("a.btn.btn-social.btn-facebook.btn-simple", m("i.fa.fa-facebook-square")),
