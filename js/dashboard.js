@@ -98,7 +98,7 @@ const SectionDashboard = {
     return  [
       // m(Nav),
       // m("div.home-content")
-      m(".section-container",[
+      m(".section-container",{onclick:()=>{ Model.closeSidebar()}},[
             m("h5", "Overview"),
               m(".row.mb-1",[
                 m(".container-fluid.mt-3", 
@@ -191,7 +191,7 @@ const SectionDashboard = {
 // SECTIONS
 const SectionLocation = {
   view:()=>{
-    return m("section.section-container",
+    return m("section.section-container",{onclick:()=>{ Model.closeSidebar()}},
              Model.location.list.length == 0?m(EmptyState):([
                 m(Locations),
                 m("div.floating-container", m("div.floating-button", {onclick:()=>{
@@ -205,7 +205,7 @@ const SectionLocation = {
 
 const SectionRates = {
   view:()=>{
-    return m("section.section-container", 
+    return m("section.section-container",{onclick:()=>{ Model.closeSidebar()}}, 
              Model.rates.list.length == 0?m(EmptyState):([
                 m(Rates),
                 m("div.floating-container", m("div.floating-button", {onclick:()=>{
@@ -219,7 +219,7 @@ const SectionRates = {
 
 const SectionVehicles = {
   view:()=>{
-    return m("section.section-container", !Model.newVehicle?(
+    return m("section.section-container",{onclick:()=>{ Model.closeSidebar()}}, !Model.newVehicle?(
         Model.vehicles.list.length == 0?m(EmptyState):([
           m(Vehicles),
           m("div.floating-container", 

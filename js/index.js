@@ -193,6 +193,10 @@ var Model ={
         Model.colorIndex++;
         if(Model.colorIndex > 3) Model.colorIndex = 0
         return Model.colorClasses[Model.colorIndex]
+    },
+    closeSidebar:()=>{
+        window.innerWidth < 769?(Model.sidebar.classList.remove("active"),(Model.sidebar.classList.contains("active")?Model.sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"):Model.sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu"))
+                ):null
     }
 }
 
