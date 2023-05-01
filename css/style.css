@@ -15,6 +15,7 @@ h3 {
 }
 body{
     overflow-x: hidden;
+    background: #f7f9fc;
 }
 h2.title{
     text-align: center!important;
@@ -263,7 +264,8 @@ nav .text-white:hover {
 .section-container{
   position: relative;
   top: 65px;
-  padding: 3rem 1.6rem;
+  padding: 3rem 2.6rem;
+/*  background: #f7f9fc;*/
 }
 .section-content{
   display: flex;
@@ -491,6 +493,9 @@ justify-content: space-between;*/
     border-radius: 13px;
 /*    box-shadow: 0 5px 10px rgba(0,0,0,0.1);*/
 }
+.panel-w-100{
+    max-width: 100%;
+}
 a.list-group-item {
     cursor: pointer;
     overflow: hidden;
@@ -520,12 +525,20 @@ select.form-control {
 .btn-black:hover{
     color: #cbcbcb!important;
 }
-.navbar-default .navbar-collapse, 
-.navbar-default .navbar-form {
+.navbar-default .navbar-collapse{
     border-color: transparent;
 }
+/*.navbar-transparent.navbar-default .navbar-collapse{
+    border-color: transparent;
+}*/
 .navbar-collapse {
     max-height: 100%;
+}
+.pb-6{
+  padding-bottom: 6rem!important;
+}
+.text-left {
+  text-align: left !important;
 }
 
 

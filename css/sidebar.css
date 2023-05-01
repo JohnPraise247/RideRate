@@ -86,7 +86,7 @@
 .main-section{
   position: relative;
   background: #f7f9fc;
-  height: 100vh;
+/*  height: 100vh;*/
   width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
@@ -281,7 +281,7 @@ nav .profile-details i{
   .sidebar.active ~ .main-section{
     left: 220px;
     width: calc(100% - 220px);
-    overflow: hidden;
+/*    overflow: hidden;*/
   }
   .main-section nav{
     width: calc(100% - 60px);

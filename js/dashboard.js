@@ -40,12 +40,10 @@ const dInput = {
 const dSelect = {
   view:(vnode)=>{
     return m("div.mb-4.form-group", 
-      m("label.form-label[for='bootstrap-wizard-validation-gender']", "Seat Number"),
-  m("select.form-control[id='SelectLocationn']",
+      m("label.form-label[for='"+vnode.attrs.id+"']",vnode.attrs.label),
+  m("select.form-control[id='"+vnode.attrs.id+"']",
     [
-      m("option[disabled]", 
-        "Select a location"
-      ),
+      m("option[disabled]", vnode.attrs.placeholder),
       m("option[value='Oye/Ikole to Lagos']", 
         "Oye/Ikole to Lagos"
       )
@@ -298,7 +296,7 @@ const EmptyState = {
 //Handles location, rates and vehicles list respectively
 const Locations = {
   view:(vnode)=>{
-    return m(".px-3",[
+    return m(".pb-6",[
       m(".input-group.mt-5",[
         m("input#locationInput.form-control.bg-white[type='text'][placeholder='Search Locations']",{onkeyup:()=>{
           vnode.state.input = document.getElementById("locationInput");
@@ -357,7 +355,7 @@ const Locations = {
 
 const Rates = {
   view:()=>{
-    return m(".px-3",[
+    return m(".pb-6",[
       m(".input-group.mt-5",[
         m("input.form-control.bg-white[type='text'][placeholder='Search Rates']"),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
@@ -382,7 +380,7 @@ const Rates = {
 
 const Vehicles = {
   view:()=>{
-    return m(".px-3",[
+    return m(".pb-6",[
       m(".input-group.mt-5",[
         m("input.form-control.bg-white[type='text'][placeholder='Search Vehicles']"),
         m("span.input-group-addon",m("i.bx.bx-search-alt"))
@@ -410,14 +408,15 @@ const Vehicles = {
 
 // Vehicles view
 const newVehicle = {
+  // oncreate:()=>{$(':radio').radio();},
   view:()=>{
     return [
       m("h5","New Vehicle Entry"),
-      m(".panel.panel-default.w-100", 
+      m(".panel.panel-default.panel-w-100", 
           m(".panel-body",[
-            m(dInput,{id:"vehicleName",placeholder:"E.g Toyota",label:"Name of vehicle"}),
-            m(dInput,{id:"plateNumber",placeholder:"E.g XXX-XXXX-XXX",label:"Plate number"}),
-            m(dSelect)
+            m(dInput,{id:"vehicleName",placeholder:"E.g Toyota",label:"Name of vehicle*"}),
+            m(dInput,{id:"plateNumber",placeholder:"E.g XXX-XXXX-XXX",label:"Plate number*"}),
+            m(dSelect,{id:"seatSpace",placeholder:"Select available seat space",label:"Available seat space*"})
             // m("div.mb-3",[
             //    m("label.form-label[for='vehicleName']", "Name of vehicle"),
             //    m("input.form-control[type='text'][placeholder='E.g Toyota'][id='vehicleName']")

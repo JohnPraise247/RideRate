@@ -18,7 +18,7 @@ const Login = {
 				m(".container[style='transform: translate(0,20%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
 				    m(".panel.img-rounded.p-4.bg-transparent",[
-					   m("p.text-white.py-3.text-center","Log in to RideRate"),
+					   m("p.text-white.py-3.text-center[style='opacity: .7']","Log in to RideRate"),
 	    	           m("div.form-group", 
       		             //m("div.input-group",[m("input.form-control[type='text'][value='Group Addon']"),m("span.input-group-addon",  m("i.fa.fa-user"))]),
                           m(Input,{type:"text",placeholder:"Username or Phone Number",value: Auth.username,oninput:(e)=>{ 
@@ -51,7 +51,7 @@ const Signup = {
 				m(".container[style='transform: translate(0,22%);z-index:9;position:relative']",[
 					m("h2.title","RideRate"),
 				    m(".panel.img-rounded.p-4.bg-transparent",[
-					   m("p.text-white.py-3.text-center","Create a new RideRate account"),
+					   m("p.text-white.py-3.text-center[style='opacity: .7']","Create a new RideRate account"),
 	    	           m(".form-group", 
 	    	           	  m(Input,{type:"text",placeholder:"Username or Phone Number",value: Auth.username,oninput:(e)=>{ 
                           	 Auth.setUsername(e.target.value)
@@ -82,11 +82,10 @@ const ForgotPwd = {
 	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
 		return [
-			m("#bg",[
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
 				   m("h2.title","RideRate"),
 				   m(".panel.img-rounded.p-4.bg-transparent",[
-					  m("p.text-white.py-3.text-center","Please enter your mobile number to search for your account"),
+					  m("p.text-white.py-3.text-center[style='opacity: .7']","Please enter your mobile number to search for your account"),
 	    	          m("div.form-group", 
 	    	              m("input.form-control.mb-3[type='text'][value=''][placeholder='Phone Number']")
                       ),
@@ -97,8 +96,7 @@ const ForgotPwd = {
 				  ])
 				]),
 				m(".bg-overlay")
-			])
-		]
+			]
 	}
 }
 
@@ -150,7 +148,7 @@ const Dashboard = {
           ),
           m("li", m("a"+(m.route.param("name") == "location"?".active":"")+"[href='#/u/location']",[
                 m("i.bx.bx-current-location"),
-                m("span.links_name", "Location")
+                m("span.links_name", "Locations")
               ]
             ),
             m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))

@@ -2,12 +2,14 @@
 /fonts
 /fontawesome
 /css/bootstrap.css
+/css/bootstrap.min.css
 /css/g.css
 /css/gsdk - Copy.css
 /css/gsdk-edit.css
 /css/sidebarx.css
 /css/sidebar2.css
 /js/bootstrap.bundle.min.js
+/js/bootstrap.min.js
 /js/jquery-ui-1.10.4.custom.min.js
 /js/gsdk.js
 /js/componentsx.js
@@ -19,7 +21,7 @@
 /bottom-sheet-master
 /web-app
 /node_modules
-./boxicons
+/boxicons
 package.json
 /.gitignore
 /index.js
