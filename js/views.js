@@ -28,6 +28,12 @@ const Login = {
                           	 Auth.setPassword(e.target.value)
                           	 }})
                        ),
+// 	    	           m("label.checkbox",
+//   [
+//     m("input[type='checkbox'][value='remember-me']"),
+//     " Remember me "
+//   ]
+// ),
                        m("button.btn.btn-primary.btn-fill.w-100.strong",{
                         	 disabled: !Auth.canSubmit(),
                            onclick: Auth.login

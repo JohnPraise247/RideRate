@@ -8,6 +8,7 @@
 //add auto suggest on input
 //no results found for location search...
 //fix ugly display for desktop mode on mobile
+//add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
 
 var Auth = {
@@ -29,6 +30,9 @@ var Auth = {
     login: function() {
         //make request
         setTimeout("m.route.set('/u/dashboard')")
+      //   fetch('https://jsonplaceholder.typicode.com/todos/1')
+      // .then(response => response.json())
+      // .then(json => console.log(json))
 
         // m.request({
         //     method: "GET",
@@ -246,8 +250,6 @@ $(document).ready(function($) {
     });
   }
 });
-
-
 
 
 $(window).scroll(function(e) {

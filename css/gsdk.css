@@ -956,12 +956,12 @@ input.ct-red + span + label + span.switch-right {
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
-  color: #333333; }
+  color: #9da4ac; }
 
 .checkbox input,
 .radio input {
   outline: none !important;
-  display: none; }
+  /*display: none;*/ }
 
 .checkbox .icons,
 .radio .icons {
@@ -1061,7 +1061,7 @@ input.ct-red + span + label + span.switch-right {
 .radio.disabled.checked .second-icon {
   opacity: 1;
   filter: alpha(opacity=100);
-  color: #D9D9D9; }
+  color: #D9D9D9; }*/
 
 /* ============================================================
  * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
