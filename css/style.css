@@ -265,6 +265,7 @@ nav .text-white:hover {
   position: relative;
   top: 65px;
   padding: 3rem 2.6rem;
+  height: 90vh;
 /*  background: #f7f9fc;*/
 }
 .section-content{
