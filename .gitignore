@@ -1,8 +1,5 @@
-/paper-kit-2-html-v2.2.0
 /fonts
-/fontawesome
 /css/bootstrap.css
-/css/bootstrap.min.css
 /css/g.css
 /css/gsdk - Copy.css
 /css/gsdk-edit.css
@@ -18,11 +15,8 @@
 /js/gsdk-checkbox.js
 /js/gsdk-bootstrapswitch.js
 /Popup Modal Box
-/bottom-sheet-master
-/web-app
 /node_modules
-/boxicons
-package.json
+/package.json
 /.gitignore
 /index.js
 /Capture.PNG
