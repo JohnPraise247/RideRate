@@ -107,14 +107,14 @@ const ForgotPwd = {
 }
 
 const PageNotFound = {
-	oncreate:()=>{ $("body").addClass("bg") },
+	oncreate:()=>{ $("body").removeClass("bg") },
 	view:()=>{
 		return [
 				m(".container[style='transform: translate(0,29.5%);z-index:9;position:relative']",[
 				   m("h1.title","Error 404"),
 				   m("h3.title","Page not fond")
 				]),
-				m(".bg-overlay")
+				// m(".bg-overlay")
 		]
 	}
 }
@@ -125,6 +125,12 @@ const Dashboard = {
 		$("body").removeClass("bg");
 		Model.sidebar = document.querySelector(".sidebar");
     Model.sidebarBtn = document.querySelector(".sidebarBtn");
+
+    
+    if(m.route.param("urlB") != "edit"){
+    	localStorage.clear("location")
+    }
+ 
 		// Model.sidebar = document.querySelector(".sidebar");
     // Model.sidebarBtn = document.querySelector(".bx-menu");
 
@@ -145,28 +151,28 @@ const Dashboard = {
         ]),
       m("ul.nav-links",[
           m("li.showMenu", 
-            m("a"+(m.route.param("name") == "dashboard"?".active":"")+"[href='#/u/dashboard']",[
+            m("a"+(m.route.param("urlA") == "dashboard"?".active":"")+"[href='#/u/dashboard']",[
                 m("i.bx.bx-grid-alt"),
                 m("span.links_name", "Dashboard")
               ]
             ),
             m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard")))
           ),
-          m("li", m("a"+(m.route.param("name") == "location"?".active":"")+"[href='#/u/location']",[
+          m("li", m("a"+(m.route.param("urlA") == "location"?".active":"")+"[href='#/u/location']",[
                 m("i.bx.bx-current-location"),
                 m("span.links_name", "Locations")
               ]
             ),
             m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry")))
           ),
-          m("li", m("a"+(m.route.param("name") == "rates"?".active":"")+"[href='#/u/rates']",[
+          m("li", m("a"+(m.route.param("urlA") == "rates"?".active":"")+"[href='#/u/rates']",[
                 m("i.bx.bx-purchase-tag"),
                 m("span.links_name", "Rates")
               ]
             ),
            m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry")))
           ),
-          m("li", m("a"+(m.route.param("name") == "vehicles"?".active":"")+"[href='#/u/vehicles']",[
+          m("li", m("a"+(m.route.param("urlA") == "vehicles"?".active":"")+"[href='#/u/vehicles']",[
                 m("i.bx.bx-car"),
                 m("span.links_name", "Vehicles")
               ]
@@ -190,10 +196,10 @@ const Dashboard = {
     ]), 
      m("section.main-section",[
      	  m(Nav),
-      	m.route.param("name") == "dashboard"?m(SectionDashboard)
-       :m.route.param("name") == "location"?m(SectionLocation)
-       :m.route.param("name") == "rates"?m(SectionRates)
-       :m.route.param("name") == "vehicles"?m(SectionVehicles)
+      	m.route.param("urlA") == "dashboard"?m(SectionDashboard)
+       :m.route.param("urlA") == "location"?m(SectionLocation)
+       :m.route.param("urlA") == "rates"?m(SectionRates)
+       :m.route.param("urlA") == "vehicles"?m(SectionVehicles)
        :m(SectionNotFound)
      ])  
     ]
@@ -213,11 +219,16 @@ m.route(document.body, "/", {
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
-    "/u/:name": {onmatch: function() {
+    "/u/:urlA": {onmatch: function() {
           return Auth.username != "" ? Dashboard : Login
         }},
-    "/:404...": Home
-    // "/:404...": PageNotFound
+    "/u/:urlA/:urlB": {onmatch: function() {
+          return Auth.username != "" ? Dashboard : Login
+        }},
+    "/u:404...": {onmatch: function() {
+          return Auth.username != "" ? Dashboard : Login
+        }},
+    "/:404...": PageNotFound
     // onmatch: function() {
     //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
     //         else return Home

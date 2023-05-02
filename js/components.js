@@ -9,6 +9,15 @@ const Input = {
  }
 }
 
+const Button = {
+  view:(vnode)=>{
+    return m("button.btn.btn-primary.btn-fill",{ onclick: vnode.attrs.onclick },[ 
+              m("i.bx[style='position: relative;top: 2px;']"+vnode.attrs.icon),
+              vnode.attrs.name
+           ])
+  }
+}
+
 
 
 

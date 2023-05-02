@@ -58,7 +58,7 @@ button{
 }
 
 
-.form-group > .form-control{
+.bg .form-control{
     border:transparent;
 }
 
@@ -108,6 +108,8 @@ button{
 /*    height:540px;*/
     top:0;
     left:0;
+    background: #25324270;
+z-index: 1;
 }
 
 .bg-overlay{
@@ -265,8 +267,9 @@ nav .text-white:hover {
 .section-container{
   position: relative;
   top: 65px;
-  padding: 3rem 2.6rem;
-  height: 90vh;
+  padding: 3rem 2.6rem 8rem 2.6rem;
+/*  height: auto;*/
+/*  height: 90vh;*/
   background: #f7f9fc;
 }
 .section-content{
@@ -318,6 +321,8 @@ nav .text-white:hover {
 }
 .footer{    
     padding: 20px 50px;
+    z-index: 2;
+position: relative;
 /*    line-height: 20px;*/
     /*display: flex;
 align-items: center;
@@ -576,7 +581,7 @@ a.list-group-item {
 .list-group-item-heading{
     font-weight: 600;
 }
-select.form-control {
+.swal2-html-container select.form-control {
     cursor: pointer;
     max-width: 270px;
     min-width: 130px;
@@ -606,11 +611,14 @@ select.form-control {
 .navbar-collapse {
     max-height: 100%;
 }
-.pb-6{
-  padding-bottom: 8rem!important;
-}
+/*.pb-6{*/
+/*  padding-bottom: 8rem!important;*/
+/*}*/
 .text-left {
   text-align: left !important;
+}
+.form-control[type="file"],.panel-body {
+  overflow: hidden;
 }
 
 
@@ -800,9 +808,6 @@ select.form-control {
     }*/
     .img-mobile{
         display: none;
-    }
-    .footer nav.pull-left, nav > ul li, .pull-right {
-        float: none !important;
     }
     .landing-page .wrapper {
        text-align: center;

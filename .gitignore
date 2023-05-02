@@ -18,5 +18,6 @@
 /package.json
 /.gitignore
 /index.js
+mithril.min.js
 /Capture.PNG
 /normal users.PNG
