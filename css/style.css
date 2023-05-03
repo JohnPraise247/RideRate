@@ -449,7 +449,9 @@ justify-content: space-between;*/
   display: block;
 }
 
-
+.blur {
+  opacity: 0;
+}
 .empty{
    margin: 0 auto;
    justify-content: center;

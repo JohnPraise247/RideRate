@@ -67,7 +67,8 @@ const NavBar = {
               ])
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
             ]),
-          m(".img-src", {"style":{"background-image":"url('images/bg.jpg')"}})
+          m(".img-src", {"style":{"background-image":"url('images/bg.jpg')"}}),
+          m(".img-src.blur", {"style":{"background-image":"url('images/bg_blur.jpg')"}})
         ]
       )
     ])

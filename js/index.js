@@ -199,8 +199,11 @@ function scrollToAnchor( anchorName ){
 
 
 $(window).scroll(function(e) {
-    oVal = ($(window).scrollTop() / 30);
-    $(".img-src").css("filter", "blur("+oVal+"px)");
+    // oVal = ($(window).scrollTop() / 30);
+    // $(".img-src").css("filter", "blur("+oVal+"px)");
+
+    oVal = ($(window).scrollTop() / 270);
+    $(".blur").css("opacity", oVal);
     
 });
 
