@@ -1,0 +1,22 @@
+.background-container.check-rates {
+  height: 27vh;
+}
+.background-container.check-rates .motto {
+  top: 59%;
+  text-align: left;
+}
+.background-container.check-rates h6 {
+  font-weight: 400;
+  text-transform: initial;
+  color: #d0d0d0;
+}
+
+
+
+
+
+@media (max-width: 767px){
+  .background-container.check-rates h6 {
+     font-size: 13px;
+  }
+}

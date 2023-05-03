@@ -770,7 +770,7 @@ a.list-group-item {
 
 
 /*Sweetalert custom class*/
-.swal2-popup {
+/*.swal2-popup {
     border-radius: 13px !important;
 }
 #swal-input1, #swal-input2 {
@@ -793,8 +793,12 @@ a.list-group-item {
 }
 .swal2-title{
     text-align: left!important;
-}
+}*/
 
+
+
+
+/*CHECK RATE VIEW*/
 
 
 

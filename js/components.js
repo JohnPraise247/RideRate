@@ -24,7 +24,8 @@ const Button = {
 
 
 const NavBar = {
-	view:()=>{
+	view:(vnode)=>{
+    vnode.state.view = (vnode.attrs.view == "check-rates"?".check-rates":"")
 	  return m("[id='navbar-full']",[
       m(".container", 
         m("nav.navbar.navbar-default.navbar-transparent.navbar-fixed-top[role='navigation']", 
@@ -55,15 +56,26 @@ const NavBar = {
           ])
         )
       ),
-      m(".background-container",[
+      m(".background-container"+vnode.state.view,[
         m(".bg-overlay"),
         m(".motto",[ 
-              m("h1[data-aos='fade-up'][data-aos-delay='']","Ride Smarter,"),
-              m("h3[data-aos='fade-up'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
-              m(".mt-5",[
-                m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
-                // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
-                m("button.btn.btn-white.m-3[data-aos='fade-up'][data-aos-delay='800']","Check Rates")
+              vnode.attrs.view != "check-rates"?([
+                m("h1[data-aos='fade-up'][data-aos-delay='']","Ride Smarter,"),
+                m("h3[data-aos='fade-up'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
+                m(".mt-5",[
+                  m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
+                  // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
+                  m("a.btn.btn-white.m-3[data-aos='fade-up'][data-aos-delay='800'][href='#/check-rates']","Check Rates")
+                ])
+              ])
+              :([
+                m(".container",[ m("h3","Check ", m("b","rates")),
+                m("h6","Get latest Price Updates for Your Favorite Transportation with RideRate")
+
+                  ])
+               
+                // m("h3[data-aos='fade-in'][data-aos-delay='']","Check ", m("b","rates")),
+                // m("h3[data-aos='fade-in']","Get latest Price Updates for Your Favorite Transportation with RideRate")
               ])
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
             ]),

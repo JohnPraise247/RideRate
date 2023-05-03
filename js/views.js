@@ -34,6 +34,17 @@ const Home = {
 	}
 }
 
+const CheckRates = {
+    oncreate:() =>{ $("body").removeClass("bg") },
+    view:() =>{
+        return [
+            m(NavBar,{view:"check-rates"}),
+            m(CheckRatesMain),
+            m(Footer)
+        ]
+    }
+}
+
 const Login = {
 	oncreate:()=>{ $("body").addClass("bg") },
 	view:()=>{
@@ -240,6 +251,7 @@ const Dashboard = {
 m.route.prefix= "#"
 m.route(document.body, "/", {
     "/": Home,
+    "/check-rates": CheckRates,
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
