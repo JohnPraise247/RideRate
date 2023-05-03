@@ -58,8 +58,8 @@ const NavBar = {
       m(".background-container",[
         m(".bg-overlay"),
         m(".motto",[ 
-              m("h1[data-aos='fade-left'][data-aos-delay='']","Ride Smarter,"),
-              m("h3[data-aos='fade-left'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
+              m("h1[data-aos='fade-up'][data-aos-delay='']","Ride Smarter,"),
+              m("h3[data-aos='fade-up'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
               m(".mt-5",[
                 m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
                 // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
