@@ -58,12 +58,12 @@ const NavBar = {
       m(".background-container",[
         m(".bg-overlay"),
         m(".motto",[ 
-              m("h1","Ride Smarter,"),
-              m("h3","Not Harder with ", m("b","RideRate")),
+              m("h1[data-aos='fade-left'][data-aos-delay='']","Ride Smarter,"),
+              m("h3[data-aos='fade-left'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
               m(".mt-5",[
-                m("a.btn.btn-primary.btn-fill.m-3",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
+                m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
                 // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
-                m("button.btn.btn-white.m-3","Check Rates")
+                m("button.btn.btn-white.m-3[data-aos='fade-up'][data-aos-delay='800']","Check Rates")
               ])
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
             ]),
@@ -84,14 +84,14 @@ const Main = {
         m("#about.container", 
           m(".row.d-flex.align-items-center",[
               m(".col-sm-6.mr-auto.text-center.mb-5.img-mobile", 
-                m("img[width=54%][src='./images/mobile_phone.png']"),
+                m("img[data-aos='zoom-in-up'][width=54%][src='./images/mobile_phone.png']"),
               ),
               m(".col-sm-6.pt-3", 
-                m("h3.section-heading"+getViewport(0), "What we do"),
+                m("h3.section-heading[data-aos='fade-left'][data-aos-delay='']"+getViewport(0), "What we do"),
                 // m("h3[style='font-weight:600']", "R i d e R a t e"),
-                m("p.desc"+getViewport(0),"RideRate helps you to automate various scheduling activities of the transport system and optimize the use of premium resources. Concerned authorities can easily use the system to set the cost of each journey.The solution, that we are going to provide you, has been especially designed considering the challenges University students come across. Some of these challenges are inadequate information, resource optimization, and stability. Emphasis has been given to easy-to-use interface. The users need not to be programmers or database experts to benefit from this system."),
+                m("p.desc[data-aos='fade-up'][data-aos-delay='300']"+getViewport(0),"RideRate helps you to automate various scheduling activities of the transport system and optimize the use of premium resources. Concerned authorities can easily use the system to set the cost of each journey.The solution, that we are going to provide you, has been especially designed considering the challenges University students come across. Some of these challenges are inadequate information, resource optimization, and stability. Emphasis has been given to easy-to-use interface. The users need not to be programmers or database experts to benefit from this system."),
                 m(getViewport(0),
-                  m("a.btn.btn-primary[href='#']"+getViewport(0),m("i.bx.bx-bulb.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Learn more")
+                  m("a.btn.btn-primary[data-aos='fade-up'][href='#']"+getViewport(0),m("i.bx.bx-bulb.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Learn more")
                 )
               )
             ]
@@ -106,10 +106,10 @@ const Main = {
       m("section.section-spacing.section-features",
         // m(".bg-overlay-black"),
       m(".container", 
-        m("h3.section-heading", "Features"),
+        m("h3.section-heading[data-aos='fade-right'][data-aos-delay='']", "Features"),
         // m(".space-50"),
         m(".mt-5.row",[
-           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='']", 
+           m(".col-sm-4[data-aos='fade-up'][data-aos-delay='100']", 
             m(".space-50"),
              m(".text-center.mb-5",
                [
@@ -119,7 +119,7 @@ const Main = {
                ]
              )
            ),
-           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='100']", 
+           m(".col-sm-4[data-aos='fade-up'][data-aos-delay='200']", 
             m(".space-50"),
              m(".text-center.mb-5",
                [
@@ -129,7 +129,7 @@ const Main = {
                ]
              )
            ),
-           m(".col-sm-4.aos-init.aos-animate[data-aos='fade-up'][data-aos-delay='200']", 
+           m(".col-sm-4[data-aos='fade-up'][data-aos-delay='300']", 
             m(".space-50"),
              m(".text-center.mb-5",
                [
@@ -154,14 +154,14 @@ const Main = {
         m(".container", 
           m(".row.align-items-center",[
               m(".col-md-6.mr-auto.text-center.mb-5", 
-                m("h2[style='font-weight:600']", 
+                m("h2[style='font-weight:600'][data-aos='fade-up'][data-aos-delay='']", 
                   "Get our mobile App"
                 )
               ),
               m(".col-md-6.text-center.pt-3", 
                 m("p",
                   [
-                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#']",
+                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#'][data-aos='fade-up'][data-aos-delay='100']",
                       [
                         m("i.bx.bxl-apple"),
                         m("span", 
@@ -169,7 +169,7 @@ const Main = {
                         )
                       ]
                     ),
-                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#']",
+                    m("a.btn.btn-fill.btn-black.d-inline-flex.align-items-center.btn-lg.m-3[href='#'][data-aos='fade-up'][data-aos-delay='200']",
                       [
                         m("i.bx.bxl-play-store"),
                         m("span", 
