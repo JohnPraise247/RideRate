@@ -174,9 +174,9 @@ const SectionDashboard = {
                         m(".d-flex.justify-content-between.align-items-center",[
                           m("div",[
                             m("h3",Model.rates.list.length),
-                             m(".text-muted-2","Rates")
+                             m(".text-muted-2","Parks")
                             ]),
-                          m("div",m("i.bx-icon.bx-two.bx.bx-lg.bx-border-circle"+Model.icon.rates))
+                          m("div",m("i.bx-icon.bx-four.bx.bx-lg.bx-border-circle"+Model.icon.park))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -186,16 +186,16 @@ const SectionDashboard = {
                 )
               ]),
               m(".row.mb-1",[
-                m(".container-fluid.mt-3", 
+                 m(".container-fluid.mt-3", 
                   m(".col-sm-6", 
                     m(".panel.panel-default", 
                       m(".panel-body",[
                         m(".d-flex.justify-content-between.align-items-center",[
                           m("div",[
-                            m("h3",Model.vehicles.list.length),
-                             m(".text-muted-2","Vehicles")
+                            m("h3",Model.rates.list.length),
+                             m(".text-muted-2","Rates")
                             ]),
-                          m("div",m("i.bx-icon.bx-three.bx.bx-lg.bx-border-circle"+Model.icon.vehicles))
+                          m("div",m("i.bx-icon.bx-two.bx.bx-lg.bx-border-circle"+Model.icon.rates))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -209,10 +209,10 @@ const SectionDashboard = {
                       m(".panel-body",[
                         m(".d-flex.justify-content-between.align-items-center",[
                           m("div",[
-                            m("h3","8"),
-                             m(".text-muted-2","Users")
+                            m("h3",Model.vehicles.list.length),
+                             m(".text-muted-2","Vehicles")
                             ]),
-                          m("div",m("i.bx-icon.bx-four.bx.bx-lg.bx-border-circle"+Model.icon.user))
+                          m("div",m("i.bx-icon.bx-three.bx.bx-lg.bx-border-circle"+Model.icon.vehicles))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -371,7 +371,7 @@ const Parks = {
       m("#list-group.list-group.mt-5",[
         Model.parks.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.parkname, i.location, i.desc ) }},[
-                   m(".name-icon.icon-green", m("i.bx"+Model.icon.park)),
+                   m(".name-icon.icon-purple", m("i.bx"+Model.icon.park)),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading", i.parkname),
                        m("small.text-muted", i.location)
