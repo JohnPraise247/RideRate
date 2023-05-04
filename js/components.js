@@ -42,13 +42,14 @@ const NavBar = {
               m(".collapse.navbar-collapse[id='navbar-collapse']",[
                   m("ul.nav.navbar-nav",[
                       m("li"+(m.route.get() == "" || m.route.get() == "/"?".active":""), m("a[href='#']", "Home")),
-                      m("li"+(m.route.get() == "/about"?".active":""), m("a[href='#/about']", "About")),
+                      m("li"+(m.route.get() == "/about"?".active":""), m(m.route.Link,{href:'/about'}, "About")),
                       m("li"+(m.route.get() == "/contact-us"?".active":""), m("a[href='#/contact-us']", "Contact us"))
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
+                    // m(m.route.Link, {href: "/about"}, "Page 1"),
                       m("li", m("a[href='#/login']", "Log in")),
                       m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']", /*m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"),*/"Sign up"))
                     ])
@@ -103,7 +104,7 @@ const Main = {
                 // m("h3[style='font-weight:600']", "R i d e R a t e"),
                 m("p.desc[data-aos='fade-up'][data-aos-delay='300']","RideRate helps you to automate various scheduling activities of the transport system and optimize the use of premium resources. Concerned authorities can easily use the system to set the cost of each journey.The solution, that we are going to provide you, has been especially designed considering the challenges University students come across. Some of these challenges are inadequate information, resource optimization, and stability. Emphasis has been given to easy-to-use interface. The users need not to be programmers or database experts to benefit from this system."),
                 m(".section-btn",
-                  m("a.btn.btn-primary[data-aos='zoom-in'][data-aos-delay='400'][href='#']",m("i.bx.bx-bulb.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Learn more")
+                  m("a.btn.btn-primary[data-aos='zoom-in'][data-aos-delay='300'][href='#']",m("i.bx.bx-bulb.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Learn more")
                 )
               )
             ]
