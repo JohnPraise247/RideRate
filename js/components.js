@@ -49,8 +49,8 @@ const NavBar = {
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
-                      m("li", m("a[href='#/signup']", "Register")),
-                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/login']",m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"), "Log in"))
+                      m("li", m("a[href='#/login']", "Log in")),
+                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']", /*m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"),*/"Sign up for free"))
                     ])
               ])
           ])
@@ -58,9 +58,9 @@ const NavBar = {
       ),
       m(".background-container"+vnode.state.view,[
         m(".bg-overlay"),
-        m(".motto",[ 
+        m(".motto[style='style='overflow-x: hidden']",[ 
               vnode.attrs.view != "check-rates"?([
-                m("h1[data-aos='fade-up'][data-aos-delay='']","Ride Smarter,"),
+                m("h1[data-aos='fade-up'][data-aos-delay='']","XRide Smarter,"),
                 m("h3[data-aos='fade-up'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
                 m(".mt-5",[
                   m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
@@ -79,8 +79,8 @@ const NavBar = {
               ])
               // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
             ]),
-          m(".img-src", {"style":{"background-image":"url('images/bg.jpg')"}}),
-          m(".img-src.blur", {"style":{"background-image":"url('images/bg_blur.jpg')"}})
+          m(".img-src"),
+          m(".img-src.blur")
         ]
       )
     ])
@@ -96,7 +96,7 @@ const Main = {
         m("#about.container", 
           m(".row.d-flex.align-items-center",[
               m(".col-sm-6.mr-auto.text-center.mb-5.img-mobile", 
-                m("img[data-aos='zoom-in-up'][width=54%][src='./images/mobile_phone.png']"),
+                m("img[data-aos='zoom-in-up'][width=54%][src='./images/mobile_phone.webp']"),
               ),
               m(".col-sm-6.pt-3", 
                 m("h3.section-heading[data-aos='fade-left'][data-aos-delay='']"+getViewport(0), "What we do"),
