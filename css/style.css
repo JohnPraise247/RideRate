@@ -150,7 +150,7 @@ z-index: 1;
 }
 
 .background-container .motto{
-    position: relative;
+    position: absolute;
     width: 450px;
     height: 0;
 /*    transform: translate(0%,150px);*/
@@ -820,9 +820,10 @@ a.list-group-item {
         width: 268px;
         top: 130px;
     }*/
-    /*.background-container .motto{
-        top: 243px;
-    }*/
+    .background-container .motto{
+/*        overflow-x: hidden;*/
+        display: block;
+    }
     .img-mobile{
         display: none;
     }

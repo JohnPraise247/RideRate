@@ -50,7 +50,7 @@ const NavBar = {
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
                       m("li", m("a[href='#/login']", "Log in")),
-                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']", /*m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"),*/"Sign up for free"))
+                      m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']", /*m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"),*/"Sign up"))
                     ])
               ])
           ])
@@ -58,9 +58,9 @@ const NavBar = {
       ),
       m(".background-container"+vnode.state.view,[
         m(".bg-overlay"),
-        m(".motto[style='style='overflow-x: hidden']",[ 
+        m(".motto",[ 
               vnode.attrs.view != "check-rates"?([
-                m("h1[data-aos='fade-up'][data-aos-delay='']","XRide Smarter,"),
+                m("h1[data-aos='fade-up'][data-aos-delay='']","Ride Smarter,"),
                 m("h3[data-aos='fade-up'][data-aos-delay='300']","Not Harder with ", m("b","RideRate")),
                 m(".mt-5",[
                   m("a.btn.btn-primary.btn-fill.m-3[data-aos='fade-up'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
