@@ -42,14 +42,14 @@ const NavBar = {
               m(".collapse.navbar-collapse[id='navbar-collapse']",[
                   m("ul.nav.navbar-nav",[
                       m("li"+(m.route.get() == "" || m.route.get() == "/"?".active":""), m("a[href='#']", "Home")),
-                      m("li"+(m.route.get() == "/about"?".active":""), m(m.route.Link,{href:'/about'}, "About")),
+                      m("li"+(m.route.get() == "/about"?".active":""), m("a[href='#/about']", "About")),
                       m("li"+(m.route.get() == "/contact-us"?".active":""), m("a[href='#/contact-us']", "Contact us"))
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
                       // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
-                    // m(m.route.Link, {href: "/about"}, "Page 1"),
+                    // m(m.route.Link, {href: "/page1"}, "Page 1"),
                       m("li", m("a[href='#/login']", "Log in")),
                       m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']", /*m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']"),*/"Sign up"))
                     ])
