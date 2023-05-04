@@ -402,7 +402,7 @@ const Vehicles = {
 //Add Location entry view
 const locationForm = {
   oncreate:(vnode)=>{
-    m.redraw()//when back is pressed
+    // m.redraw()//when back is pressed
   },
   view:(vnode)=>{
     return [
@@ -413,16 +413,18 @@ const locationForm = {
               m(".col-sm-6",m(dInput,{ id:"locationInput1",placeholder:"From",label:"Location *", value: m.route.param("from"), 
                 oninput:(e)=>{
                   // window.history.pushState(null,null,"/#/u/location/"+m.route.param("urlB")+"?from="+encodeURI(e.target.value)+"&to="+encodeURI($("#locationInput2").val()))
-                  m.route.set("/u/location/"+m.route.param("urlB")+"?from="+encodeURI(e.target.value)+"&to="+encodeURI($("#locationInput2").val()))
-                  m.redraw()
+                  m.route.set("/u/location/"+m.route.param("urlB"),{from: e.target.value, to: $("#locationInput2").val()}, {replace : true})
+                  // m.route.set("/u/location/"+m.route.param("urlB")+"?from="+encodeURI(e.target.value)+"&to="+encodeURI($("#locationInput2").val()))
+                  // m.redraw()
                   // m.route.param("urlB") == "edit"?m.route.set("/u/location/edit?from="+encodeURI(e.target.value)+"&to="+encodeURI($("#locationInput2").val())) 
                   // :m.route.param("urlB") == "new"?m.route.set("/u/location/new?from="+encodeURI(e.target.value)+"&to="+encodeURI($("#locationInput2").val())) 
                   // :""
                 }})),
               m(".col-sm-6",m(dInput,{ id:"locationInput2",placeholder:"To",label:"Destination *", value: m.route.param("to"), 
                 oninput:(e)=>{
-                  m.route.set("/u/location/"+m.route.param("urlB")+"?from="+encodeURI($("#locationInput1").val())+"&to="+encodeURI(e.target.value))
-                  m.redraw()
+                  m.route.set("/u/location/"+m.route.param("urlB"),{from: $("#locationInput1").val(), to: e.target.value}, {replace : true})
+                  // m.route.set("/u/location/"+m.route.param("urlB")+"?from="+encodeURI($("#locationInput1").val())+"&to="+encodeURI(e.target.value))
+                  // m.redraw()
                 }}))
             ]),
             m(dUpload,{id:"locationImageUpload",label:"Location image"}),
@@ -488,20 +490,19 @@ const rateForm = {
             m(dSelect,{id:"selectLocation",placeholder:"Select available seat space",label:"Select a location *", selected: m.route.param("location"),
               onupdate:()=> $("#selectLocation").val(m.route.param("location")),
               onchange:()=>{
-                m.route.set("/u/rates/"+m.route.param("urlB")+"?location="+$("#selectLocation").val()+"&price1="+encodeURI($("#priceInput1").val())+"&price2="+encodeURI($("#priceInput2").val()))
-                m.redraw()
+                m.route.set("/u/rates/"+m.route.param("urlB"),{location: $("#selectLocation").val(), price1: $("#priceInput1").val(), price2: $("#priceInput2").val()}, {replace : true})
+                // m.route.set("/u/rates/"+m.route.param("urlB")+"?location="+$("#selectLocation").val()+"&price1="+encodeURI($("#priceInput1").val())+"&price2="+encodeURI($("#priceInput2").val()))
+                // m.redraw()
             }}),
             m(".row",[
               m(".col-sm-6",m(dInput,{id:"priceInput1",placeholder:"Price 1",label:"Price 1*",type:"number", value: m.route.param("price1"),
                 oninput:(e)=>{
-                  m.route.set("/u/rates/"+m.route.param("urlB")+"?location="+$("#selectLocation").val()+"&price1="+encodeURI(e.target.value)+"&price2="+encodeURI($("#priceInput2").val()))
-                  m.redraw()
+                  m.route.set("/u/rates/"+m.route.param("urlB"),{location: $("#selectLocation").val(), price1: e.target.value, price2: $("#priceInput2").val()}, {replace : true})
                 }
               })),
               m(".col-sm-6",m(dInput,{id:"priceInput2",placeholder:"(Optional)",label:"Price 2",type:"number", value: m.route.param("price2"),
-            oninput:(e)=>{
-                  m.route.set("/u/rates/"+m.route.param("urlB")+"?location="+$("#selectLocation").val()+"&price1="+encodeURI($("#priceInput1").val())+"&price2="+encodeURI(e.target.value))
-                  m.redraw()
+               oninput:(e)=>{
+                  m.route.set("/u/rates/"+m.route.param("urlB"),{location: $("#selectLocation").val(), price1: $("#priceInput1").val(), price2: e.target.value }, {replace : true})
                 }})),
             ]),
             m(dButton,{id: 1, name: m.route.param("urlB") == "new"?"Create rate":"Edit rate", icon:".bx-purchase-tag", click:()=>{
@@ -558,8 +559,9 @@ const vehicleForm = {
             m(".row",[
               m(".col-sm-6",m(dInput,{id:"vehicleName",placeholder:"E.g Toyota",label:"Name of vehicle *", value: m.route.param("name"),
                 oninput:(e)=>{
-                  m.route.set("/u/vehicles/"+m.route.param("urlB")+"?name="+encodeURI(e.target.value)+"&park="+$("#parkLocation").val())
-                  m.redraw()
+                  m.route.set("/u/vehicles/"+m.route.param("urlB"),{name: e.target.value, park: $("#parkLocation").val()}, {replace : true})
+                  // m.route.set("/u/vehicles/"+m.route.param("urlB")+"?name="+encodeURI(e.target.value)+"&park="+$("#parkLocation").val())
+                  // m.redraw()
                 }})),
               m(".col-sm-6",m(dSelect,{id:"parkLocation",placeholder:"Select Location of park",label:"Location of park *",list:["Shell"]}))
             ]),

@@ -107,7 +107,8 @@ var Model ={
                         to: e.to, 
                         desc: e.desc
                     }))
-                    m.route.set("/u/location/edit?from="+encodeURI(e.from)+"&to="+encodeURI(e.to))
+                    m.route.set("/u/location/edit",{from:e.from, to: e.to})
+                    // m.route.set("/u/location/edit?from="+encodeURI(e.from)+"&to="+encodeURI(e.to))
                 }
             })
         }else if(m.route.param("urlA") == "rates"){
@@ -118,7 +119,7 @@ var Model ={
                         price2: e.price2, 
                         location: e.location
                     }))
-                    m.route.set("/u/rates/edit?location="+encodeURI(e.location)+"&price1="+encodeURI(e.price1)+"&price2="+encodeURI(e.price2))
+                    m.route.set("/u/rates/edit",{location: e.location, price1: e.price1, price2: e.price2})
                 }
             })
         }else if(m.route.param("urlA") == "vehicles"){
@@ -128,7 +129,7 @@ var Model ={
                         name: e.name, 
                         park: e.park
                     }))
-                    m.route.set("/u/vehicles/edit?name="+encodeURI(e.name)+"&park="+encodeURI(e.park))
+                    m.route.set("/u/vehicles/edit",{name:e.name, park: e.park})
                 }
             })
         }
@@ -196,15 +197,14 @@ window.addEventListener('hashchange', function () {
 });
 
 
-//Close modal onback key
-/*$(document).ready(function($) {
+//onback key
+$(document).ready(function($) {
   if (window.history && window.history.pushState) {
     $(window).on('popstate', function() {
-        // Swal.isVisible()?Swal.close():null
-        // goBack()
+        m.redraw()
     });
   }
-});*/
+});
 
 
 

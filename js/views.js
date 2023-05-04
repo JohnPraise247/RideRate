@@ -40,6 +40,35 @@ const ContactUs = {
     view:() =>{
         return [
             m(NavBar,{nav:"nav-small", title: "Contact Us"}),
+            /*m("section.container[id='contact']",
+  [
+    m("h2", 
+      "Contact"
+    ),
+    m("p",
+      [
+        "Calligraphr.com is provided by:",
+        m("br"),
+        m("br"),
+        m("a[href='https://www.maklabu.com']", 
+          "Maklabu GmbH"
+        ),
+        m("br"),
+        " Ausserdorf 5",
+        m("br"),
+        " 7425 Massein",
+        m("br"),
+        " Switzerland",
+        m("br"),
+        m("br"),
+        m("a[href='mailto:info@calligraphr.com']", 
+          "info@calligraphr.com"
+        ),
+        m("br")
+      ]
+    )
+  ]
+)*/
             m(UnderDev),
             m(Footer)
         ]
@@ -298,7 +327,7 @@ const Dashboard = {
 
 
 // Routes
-m.route.prefix= "#"
+m.route.prefix= ""
 m.route(document.body, "/", {
     "/": Home,
     "/check-rates": CheckRates,
