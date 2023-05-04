@@ -315,7 +315,7 @@ const Locations = {
     return [
       m(dSearchInput,{id: "locationInput", placeholder: "Search Locations"}),
       m("#list-group.list-group.mt-5",[
-        Model.locations.list.map((i,j)=>{
+        Model.locations.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.from, i.to, i.desc) }},[
                     // m(".name-icon"+Model.setIconColor(),i.from.charAt(0).toUpperCase() + i.to.charAt(0).toUpperCase() ),
                     m(".name-icon.icon-blue", m("i.bx.bx-current-location")),

@@ -160,16 +160,21 @@ var Model ={
 
 // Navbar scroll
 $(document).scroll(function() {
-    if( $(this).scrollTop() > 150 ) {
-        if(Model.transparent) {
-            Model.transparent = false;
-            $('nav[role="navigation"]').removeClass('navbar-transparent');
-        }
-    } else {
-        if( !Model.transparent ) {
-            Model.transparent = true;
-            $('nav[role="navigation"]').addClass('navbar-transparent');
-        }
+    // $(".img-src").css("filter", "blur("+oVal+"px)");
+    let path = m.route.get(), 
+        pathArray1 =  path == "/about" || path == "/contact-us" || path == "/privacy-policy" || path == "/tac",
+        pathArray2 =  pathArray1 || path == "/check-rates",
+        value = 0;
+
+    (pathArray2)?oVal = ($(window).scrollTop() / 30) : oVal = ($(window).scrollTop() / 270)
+    $(".blur").css("opacity", oVal);   
+
+    (path == "/check-rates")? value = 60 : (pathArray1)? value = 50 : value = 630
+
+    if( $(this).scrollTop() > value ) {
+        if(Model.transparent) { Model.transparent = false; $('nav[role="navigation"]').removeClass('navbar-transparent') }
+    }else{
+        if(!Model.transparent) { Model.transparent = true; $('nav[role="navigation"]').addClass('navbar-transparent') }
     }
 });
 
@@ -186,6 +191,10 @@ function scrollToAnchor( anchorName ){
     });
 }
 
+window.addEventListener('hashchange', function () {
+    window.scrollTo(0,0)
+});
+
 
 //Close modal onback key
 /*$(document).ready(function($) {
@@ -198,26 +207,19 @@ function scrollToAnchor( anchorName ){
 });*/
 
 
-$(window).scroll(function(e) {
-    // oVal = ($(window).scrollTop() / 30);
-    // $(".img-src").css("filter", "blur("+oVal+"px)");
 
-    oVal = ($(window).scrollTop() / 270);
-    $(".blur").css("opacity", oVal);
-    
-});
 
 // $(window).resize(function(){m.redraw()});
 
-const getViewport = (index) =>{
-    if(index == 0){
-        return window.innerWidth < 767? ".text-center":".text-left"
-    }else if(index == 1){
-        return window.innerWidth > 769? ".d-flex.align-items-center":""
-    }
-}
+// const getViewport = (index) =>{
+//     if(index == 0){
+//         return window.innerWidth < 767? ".text-center":".text-left"
+//     }else if(index == 1){
+//         return window.innerWidth > 769? ".d-flex.align-items-center":""
+//     }
+// }
 
-const goBack = () =>{
+/*const goBack = () =>{
     if(m.route.param("urlB") == "new" || m.route.param("urlB") == "edit"){
         // m.route.param("urlA") == "location"? window.location.assign('/#/u/location') : window.location.assign('/#/u/dashboard')
         // m.route.param("urlA") == "location"? window.location.assign('/#/u/location') : window.history.back()
@@ -227,7 +229,7 @@ const goBack = () =>{
     // if(m.route.param("urlA") == "location"){
     //     m.route.param("urlB") == "new" || m.route.param("urlB") == "edit"? window.location.assign('/#/u/location') : window.history.back()
     // }
-}
+}*/
 
 
 

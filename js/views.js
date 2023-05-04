@@ -28,8 +28,52 @@ const CheckRates = {
     oncreate:() =>{ $("body").removeClass("bg") },
     view:() =>{
         return [
-            m(NavBar,{view:"check-rates"}),
+            m(NavBar,{nav:"nav-small", title: "Check rates", sub: "Get latest Price Updates for Your Favorite Transportation with RideRate"}),
             m(CheckRatesMain),
+            m(Footer)
+        ]
+    }
+}
+
+const ContactUs = {
+    oncreate:() =>{ $("body").removeClass("bg") },
+    view:() =>{
+        return [
+            m(NavBar,{nav:"nav-small", title: "Contact Us"}),
+            m(UnderDev),
+            m(Footer)
+        ]
+    }
+}
+
+const About = {
+    oncreate:() =>{ $("body").removeClass("bg") },
+    view:() =>{
+        return [
+            m(NavBar,{nav:"nav-small", title: "About"}),
+            m(UnderDev),
+            m(Footer)
+        ]
+    }
+}
+
+const PrivacyPolicy = {
+    oncreate:() =>{ $("body").removeClass("bg") },
+    view:() =>{
+        return [
+            m(NavBar,{nav:"nav-small", title: "Privacy Policy"}),
+            m(UnderDev),
+            m(Footer)
+        ]
+    }
+}
+
+const Tac = {
+    oncreate:() =>{ $("body").removeClass("bg") },
+    view:() =>{
+        return [
+            m(NavBar,{nav:"nav-small", title: "Terms & Conditions"}),
+            m(UnderDev),
             m(Footer)
         ]
     }
@@ -144,6 +188,26 @@ const PageNotFound = {
 	}
 }
 
+const UnderDev = {
+    view:()=>{
+      return m(".main",
+        m("section", 
+          m(".container.py-5", [
+          	m(".space-50"),
+          	m(".space-50"),
+          	m(".space-50"),
+          	m("div.wrap-icon[style='color:#898989;font-size:55px']", m("i.bx.bx-wrench")),
+          	m("h3.text-center.text-muted", "This page is under development"),
+          	m(".space-50"),
+          	m(".space-50"),
+          	m(".space-50"),
+          	m(".space-50")
+          ])
+        )
+     )
+  }
+}
+
 
 const Dashboard = {
 	oncreate:()=>{
@@ -231,10 +295,6 @@ const Dashboard = {
 	}
 }
 
-// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/dashboard']", "Dashboard"))),
-// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/location']", "Location Entry"))),
-// m("ul.sub-menu.blank", m("li",m("a.link_name[href='#/u/rates']", "Rates Entry"))),
-// m("ul.sub-menu.blank", m("li", m("a.link_name[href='#/u/vehicles]", "Vehicles entry")))
 
 
 // Routes
@@ -242,6 +302,10 @@ m.route.prefix= "#"
 m.route(document.body, "/", {
     "/": Home,
     "/check-rates": CheckRates,
+    "/contact-us": ContactUs,
+    "/about": About,
+    "/privacy-policy": PrivacyPolicy,
+    "/tac": Tac,
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
