@@ -327,7 +327,7 @@ const Dashboard = {
 
 
 // Routes
-m.route.prefix= ""
+m.route.prefix= "/"
 m.route(document.body, "/", {
     "/": Home,
     "/check-rates": CheckRates,
