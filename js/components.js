@@ -1,3 +1,25 @@
+/* ================================
+ * HOMEPAGE COMPONENTS & VIEWS
+ * ================================ */
+
+
+
+//COMPONENTS
+const ContainerAbsolute = {
+  view:(vnode)=>{
+    return [// m(".container[style='transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;']",[
+      m(".container.container-absolute",[ 
+        m("h2.title","RideRate"),
+         m(".panel.p-4.bg-transparent",[
+             m("p.text-white.py-3.text-center[style='opacity: .7']",vnode.attrs.title),
+             vnode.children          
+          ])
+      ]),
+      m(".bg-overlay")
+    ]
+  }
+}
+
 const Input = {
   view:(vnode)=>{
     return m("input.form-control.mb-3[type='"+vnode.attrs.type+"'][value=''][placeholder='"+vnode.attrs.placeholder+"']",{
@@ -20,6 +42,22 @@ const Button = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//VIEWS
 const NavBar = {
 	view:(vnode)=>{
     vnode.state.view = (vnode.attrs.nav == "nav-small"?".nav-small":"")

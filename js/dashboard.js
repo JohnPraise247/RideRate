@@ -16,6 +16,7 @@ const Nav = {
               }),
               m("span.dashboard", (m.route.param("urlA") == "dashboard"?"Dashboard"
                                   :m.route.param("urlA") == "location"?"Location Entry"
+                                  :m.route.param("urlA") == "parks"?"Park Entry"
                                   :m.route.param("urlA") == "rates"?"Rates Entry"
                                   :m.route.param("urlA") == "vehicles"?"Vehicles Entry"
                                   :"Page not found")
@@ -146,7 +147,7 @@ const dFab = {
 const SectionDashboard = {
   view:()=>{
     return  [
-      m(".section-container",{onclick:()=>{ Model.closeSidebar()}},[
+      m(".section-container",{onclick:()=>{ Model.closeSidebar() }},[
             m("h5", "Overview"),
               m(".row.mb-1",[
                 m(".container-fluid.mt-3", 
@@ -158,7 +159,7 @@ const SectionDashboard = {
                              m("h3",Model.locations.list.length),
                              m(".text-muted-2","Locations")
                             ]),
-                          m("div",m("i.bx-icon.bx.bx-one.bx-current-location.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx.bx-one.bx-lg.bx-border-circle"+Model.icon.location))
                         ])
                         // m("small.text-muted","In Total")
                         ]
@@ -175,7 +176,7 @@ const SectionDashboard = {
                             m("h3",Model.rates.list.length),
                              m(".text-muted-2","Rates")
                             ]),
-                          m("div",m("i.bx-icon.bx-two.bx.bx-purchase-tag.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-two.bx.bx-lg.bx-border-circle"+Model.icon.rates))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -194,7 +195,7 @@ const SectionDashboard = {
                             m("h3",Model.vehicles.list.length),
                              m(".text-muted-2","Vehicles")
                             ]),
-                          m("div",m("i.bx-icon.bx-three.bx.bx-car.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-three.bx.bx-lg.bx-border-circle"+Model.icon.vehicles))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -211,7 +212,7 @@ const SectionDashboard = {
                             m("h3","8"),
                              m(".text-muted-2","Users")
                             ]),
-                          m("div",m("i.bx-icon.bx-four.bx.bx-user.bx-lg.bx-border-circle"))
+                          m("div",m("i.bx-icon.bx-four.bx.bx-lg.bx-border-circle"+Model.icon.user))
                         ]),
                         // m("small.text-muted","In Total")
                         ]
@@ -246,6 +247,17 @@ const SectionLocation = {
   }
 }
 
+const SectionParks = {
+  view:()=>{
+    return m("section.section-container",{onclick:()=>{ Model.closeSidebar()}},
+      m.route.param("urlB") == "new" || m.route.param("urlB") == "edit"?m(parkForm)
+      :(
+            Model.parks.list.length == 0?m(EmptyState):([ m(Parks), m(dFab) ])
+      )
+    )
+  }
+}
+
 const SectionRates = {
   view:()=>{
     return m("section.section-container",{onclick:()=>{ Model.closeSidebar()}}, 
@@ -272,9 +284,9 @@ const SectionNotFound = {
   view:()=>{
     return m("section.section-container", 
             m(".empty",[
-              m("i.bx.bx-icon.bx-search-alt.bx-lg.bx-border-circle"),
+              m("i.bx.bx-icon.bx-lg.bx-border-circle"+Model.icon.searchAlt),
               m("h5.strong.text-muted-2","This requested URL was not found on this server."),
-              m(Button,{name: "Goto Dashboard", icon:".bx-left-arrow-alt", onclick:()=> {m.route.set("/u/dashboard")}})
+              m(Button,{name: "Goto Dashboard", icon: Model.icon.leftArrowAlt, onclick:()=> {m.route.set("/u/dashboard")}})
             ])
           )
   }
@@ -283,22 +295,23 @@ const SectionNotFound = {
 const EmptyState = {
   view:()=>{
     return m(".empty",[
-              m("i.bx.bx-icon."+(m.route.param("urlA") == "location"?".bxs-edit-location"
-                :m.route.param("urlA") == "rates"?".bx-purchase-tag"
-                :m.route.param("urlA") == "vehicles"?".bx-car"
+              m("i.bx.bx-icon."+(m.route.param("urlA") == "location"? Model.icon.location
+                :m.route.param("urlA") == "rates"? Model.icon.rates
+                :m.route.param("urlA") == "vehicles"? Model.icon.vehicles
                 :null)+".bx-lg.bx-border-circle"),
+
               m.route.param("urlA") == "location"?m("h5.strong.text-muted-2","No location added yet")
               :m.route.param("urlA") == "rates"?(
-                Model.locations.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bxs-edit-location.bx-sm.mr-2"),"location first to proceed"]):m("h5.strong.text-muted-2","No Rates added yet")
+                Model.locations.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bx-sm.mr-2"+Model.icon.location),"location first to proceed"]):m("h5.strong.text-muted-2","No Rates added yet")
               ):m.route.param("urlA") == "vehicles"?(
-                Model.locations.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bxs-edit-location.bx-sm.mr-2"),"location first to proceed"]):m("h5.strong.text-muted-2","No Vehicles added yet")
+                Model.locations.list.length == 0?m("h5.strong.text-muted-2",["Add a ",m("i.bx.bx-sm.mr-2"+Model.icon.location),"location first to proceed"]):m("h5.strong.text-muted-2","No Vehicles added yet")
               )
               :null,
               m.route.param("urlA") == "rates" || m.route.param("urlA") == "vehicles"?(
-                Model.locations.list.length != 0?m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"])
+                Model.locations.list.length != 0?m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-md[style='position: relative;top: 4px;']"+Model.icon.plus),"Add"])
                 :null
               )
-              :m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-plus.bx-md[style='position: relative;top: 4px;']"),"Add"]),
+              :m("button.btn.btn-primary.btn-fill",{onclick:()=>{Model.addNew()}},[m("i.bx.bx-md[style='position: relative;top: 4px;']"+Model.icon.plus),"Add"]),
         ])
           
   }
@@ -312,7 +325,13 @@ const EmptyState = {
 
 
 
-//Handles location, rates and vehicles list respectively
+
+
+
+
+
+
+//Handles location, parks, rates and vehicles list respectively
 const Locations = {
   view:(vnode)=>{
     return [
@@ -321,7 +340,7 @@ const Locations = {
         Model.locations.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.from, i.to, i.desc) }},[
                     // m(".name-icon"+Model.setIconColor(),i.from.charAt(0).toUpperCase() + i.to.charAt(0).toUpperCase() ),
-                    m(".name-icon.icon-blue", m("i.bx.bx-current-location")),
+                    m(".name-icon.icon-blue", m("i.bx"+Model.icon.location)),
                     // m("img.img-circle.mr-3[src='./images/tb.png'][width=36][height=36]"),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i.from +" to "+ i.to),
@@ -345,6 +364,28 @@ const Locations = {
 }
 
 
+const Parks = {
+  view:(vnode)=>{
+    return [
+      m(dSearchInput,{id: "parkInput", placeholder: "Search Parks"}),
+      m("#list-group.list-group.mt-5",[
+        Model.parks.list.map((i)=>{
+          return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.parkname, i.location, i.desc ) }},[
+                   m(".name-icon.icon-green", m("i.bx"+Model.icon.park)),
+                    m(".w-100.d-flex[style='flex-direction:column']",[
+                       m("h5.list-group-item-heading", i.parkname),
+                       m("small.text-muted", i.location)
+                    ])  
+                  ])
+        })
+
+
+      ])
+    ]
+  }
+}
+
+
 const Rates = {
   view:(vnode)=>{
     return [
@@ -352,7 +393,7 @@ const Rates = {
       m("#list-group.list-group.mt-5",[
         Model.rates.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.price1, i.price2, i.location) }},[
-                   m(".name-icon.icon-green", m("i.bx.bx-purchase-tag")),
+                   m(".name-icon.icon-green", m("i.bx"+Model.icon.rates)),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",(i.price2 !=""?"₦"+i.price1 +" - ₦"+ i.price2:"₦"+i.price1)),
                        m("small.text-muted", i.location)
@@ -374,7 +415,7 @@ const Vehicles = {
       m("#list-group.list-group.mt-5",[
         Model.vehicles.list.map((i)=>{
           return m("a.list-group-item.d-flex.justify-content-center.align-items-center",{onclick:()=>{ Model.edit(i.name, i.park) }},[
-                    m(".name-icon.icon-yellow", m("i.bx.bx-car")),
+                    m(".name-icon.icon-yellow", m("i.bx"+Model.icon.vehicles)),
                     m(".w-100.d-flex[style='flex-direction:column']",[
                        m("h5.list-group-item-heading",i.name),
                        m("small.text-muted", i.park)
@@ -430,9 +471,9 @@ const locationForm = {
                   // m.redraw()
                 }}))
             ]),
-            m(dUpload,{id:"locationImageUpload",label:"Location image"}),
+            // m(dUpload,{id:"locationImageUpload",label:"Location image"}),
             m(dTextarea,{id:"locationDescTA",placeholder:". . .",label:"Description"}),
-            m(dButton,{id: 0, name: m.route.param("urlB") == "new"?"Create location":"Edit location", icon:".bx-current-location", click:()=>{
+            m(dButton,{id: 0, name: m.route.param("urlB") == "new"?"Create location":"Edit location", icon: Model.icon.location, click:()=>{
 
             if($("#locationInput1").val().trim().length > 0 && $("#locationInput2").val().trim().length > 0){
               if(m.route.param("urlB") == "new"){
@@ -479,6 +520,69 @@ const locationForm = {
 }
 
 
+//Add Park entry view
+const parkForm = {
+  view:(vnode)=>{
+    return [
+      m("h5",m.route.param("urlB") == "new"?"New Park Entry":"Edit Park Entry"),
+      m(".panel.panel-default.panel-w-100", 
+          m(".panel-body",[
+            m(".row",[
+              m(".col-sm-6",m(dInput,{ id:"parkInput1",placeholder:"Park name",label:"Name of park *", value: m.route.param("parkname"), 
+                oninput:(e)=>{
+                  m.route.set("/u/parks/"+m.route.param("urlB"),{parkname: e.target.value, to: $("#parkInput2").val()}, {replace : true})
+                }})),
+              m(".col-sm-6",m(dInput,{ id:"parkInput2",placeholder:"",label:"Location *", value: m.route.param("location"), 
+                oninput:(e)=>{
+                  m.route.set("/u/parks/"+m.route.param("urlB"),{from: $("#parkInput1").val(), to: e.target.value}, {replace : true})
+                }}))
+            ]),
+            m(dUpload,{id:"parkImageUpload",label:"Park image"}),
+            m(dTextarea,{id:"parkDescTA",placeholder:". . .",label:"Description"}),
+            m(dButton,{id: 0, name: m.route.param("urlB") == "new"?"Create park":"Edit park", icon: Model.icon.park, click:()=>{
+
+            if($("#parkInput1").val().trim().length > 0 && $("#parkInput2").val().trim().length > 0){
+              if(m.route.param("urlB") == "new"){
+                    Model.parks.list.push({
+                      parkname: $("#parkInput1").val(), 
+                      location: $("#parkInput2").val(), 
+                      desc:"No Descriptions . . ."
+                    })
+                    m.route.set("/u/parks", null)    
+              }else{
+                  let temp = []
+                  let parkname = $("#parkInput1").val();
+                  let location = $("#parkInput2").val();
+                  let old = JSON.parse(localStorage.getItem("park"))
+
+                    Model.parks.list.forEach((e)=>{
+                      if(e.parkname == old.parkname && e.location == old.location){
+                        temp.push({
+                          parkname: parkname, 
+                          location: location, 
+                          desc: e.desc
+                        })
+                      }else{
+                        temp.push({
+                          parkname: e.parkname, 
+                          location: e.location, 
+                          desc: e.desc
+                        })
+                      }
+                    })
+                    Model.parks.list = temp
+                    m.route.set("/u/parks")     
+              }
+             }
+            }}
+          )                    
+        ])
+      ) 
+    ]
+  }
+}
+
+
 //Add Rate entry view
 const rateForm = {
   // oncreate:(vnode)=>{
@@ -508,7 +612,7 @@ const rateForm = {
                   m.route.set("/u/rates/"+m.route.param("urlB"),{location: $("#selectLocation").val(), price1: $("#priceInput1").val(), price2: e.target.value }, {replace : true})
                 }})),
             ]),
-            m(dButton,{id: 1, name: m.route.param("urlB") == "new"?"Create rate":"Edit rate", icon:".bx-purchase-tag", click:()=>{
+            m(dButton,{id: 1, name: m.route.param("urlB") == "new"?"Create rate":"Edit rate", icon: Model.icon.rates, click:()=>{
                 // ($("#priceInput1").val().trim().length > 0 && $("#priceInput2").val().trim().length > 0)? (Model.rates.list.push([$("#selectLocation").val(),"₦"+$("#priceInput1").val()+" - ₦"+$("#priceInput2").val()]),m.route.set("/u/rates"))
                 // :($("#priceInput1").val().trim().length > 0)? (Model.rates.list.push([$("#selectLocation").val(),"₦"+$("#priceInput1").val()]),m.route.set("/u/rates"))
                 // :false
@@ -577,7 +681,7 @@ const vehicleForm = {
               m(".col-sm-6",m(dInput,{id:"arrivalTime",placeholder:"E.g 10:00am",label:"Time of Arrival *"})),
               m(".col-sm-6",m(dInput,{id:"departureTime",placeholder:"E.g 12:00pm",label:"Time of departure *"}))
             ]),
-            m(dButton,{id: 2, name: m.route.param("urlB") == "new"?"Create vehicle entry":"Edit vehicle entry", icon:".bx-car", click:()=>{
+            m(dButton,{id: 2, name: m.route.param("urlB") == "new"?"Create vehicle entry":"Edit vehicle entry", icon: Model.icon.vehicles, click:()=>{
 
               // (($("#vehicleName").val().trim().length > 0)? (Model.vehicles.list.push({name: $("#vehicleName").val().trim(), park: $("#parkLocation").val() }),m.route.set("/u/vehicles")):null)
 

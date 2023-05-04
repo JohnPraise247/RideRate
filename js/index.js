@@ -2,12 +2,8 @@
 
 //fix li hover for nav
 //fix route to redirect /u/ to /u/dashbaord
-//Desktop View for signin and login has duplicate background
-//ADd AOS
-//blm th backgnd (background issues on mobile )
 //add auto suggest on input
 //no results found for location search...
-//fix ugly display for desktop mode on mobile
 //add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 //style upload btn
 
@@ -69,9 +65,20 @@ var Model ={
     transparent:true,
     sidebar:"",
     sidebarBtn:"",
-    // term:"",
-    colorIndex:-1,//controls how colors are picked
-    colorClasses:[".icon-blue",".icon-green",".icon-yellow",".icon-red"],
+    // colorIndex:-1,//controls how colors are picked
+    // colorClasses:[".icon-blue",".icon-green",".icon-yellow",".icon-red"],
+    icon: {
+        dashboard: ".bx-grid-alt",
+        location: ".bx-trip",//current-location
+        park: ".bxs-car-garage",
+        rates: ".bx-dollar-circle",
+        vehicles: ".bx-car",
+        user: ".bx-user",
+        searchAlt: ".bx-search-alt",
+        leftArrowAlt: ".bx-left-arrow-alt",
+        plus: ".bx-plus",
+        logOut: ".bx-log-out",
+    },
     locations:{
         list:[
           { from: "Oye/Ikole", to: "Lagos", desc: "No Description" },
@@ -83,6 +90,11 @@ var Model ={
           { from: "Oye/Ikole", to: "Edo", desc: "No Description" }
         ]
         // list:[]// list:[["Oye to Ikole","1.5 Hours Journey"],["Ado Ekiti to Ilorin","Description . . ."]],
+    },
+    parks:{
+        list:[
+          { parkname: "Shell", location: "Ikole", desc: "No Description" }
+        ]
     },
     rates:{
         list:[]
@@ -194,18 +206,18 @@ function scrollToAnchor( anchorName ){
 }
 
 window.addEventListener('hashchange', function () {
-    window.scrollTo(0,0)
+    window.scrollTo(0,0);
 });
 
 
-//onback key
-$(document).ready(function($) {
-  if (window.history && window.history.pushState) {
-    $(window).on('popstate', function() {
-        m.redraw()
-    });
-  }
-});
+// onback key
+// $(document).ready(function($) {
+//   if (window.history && window.history.pushState) {
+//     $(window).on('popstate', function() {
+
+//     });
+//   }
+// });
 
 
 
