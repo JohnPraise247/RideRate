@@ -324,7 +324,19 @@ const Dashboard = {
 	}
 }
 
-
+// index.js
+// function load(file) {
+//     return m.request({
+//         method: "GET",
+//         url: file,
+//         extract: function(xhr) {
+//         	// console.log(xhr.responseText)
+//         	// var module = {};
+//         	// return eval('var module = {};' + xhr.responseText + ';return module.exports;');
+//             return Function("var module = {};" + xhr.responseText + ";return module.exports;")
+//         }
+//     })
+// }
 
 // Routes
 m.route.prefix = '#'
@@ -338,6 +350,11 @@ m.route(document.body, "/", {
     "/login": Login,
     "/signup": Signup,
     "/forgot-pwd": ForgotPwd,
+    // "/load": {
+    //     onmatch: function() {
+    //         return load("js/load.js")
+    //     },
+    // },
     "/u/:urlA": {onmatch: function() {
           return Auth.username != "" ? Dashboard : Login
         }},

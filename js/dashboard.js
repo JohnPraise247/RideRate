@@ -31,12 +31,15 @@ const Nav = {
 }
 
 const dInput = {
+  oninit:(vnode)=>{
+    vnode.state.value = vnode.attrs.value || ""
+  },
   view:(vnode)=>{
     return m("div.mb-4",[
                m("label.form-label[for='"+vnode.attrs.id+"']", vnode.attrs.label),
                m("input.form-control[type='"+(vnode.attrs.type || "text")+"'][placeholder='"+vnode.attrs.placeholder+"'][id='"+vnode.attrs.id+"']", {
-                  value: vnode.attrs.value,
-                  oninput:(e)=> vnode.attrs.oninput(e) 
+                  value: vnode.state.value,
+                  oninput:(e)=> {vnode.state.value = e.target.value; vnode.attrs.oninput(e)}
               })
           ])
   }
@@ -401,9 +404,9 @@ const Vehicles = {
 
 //Add Location entry view
 const locationForm = {
-  oncreate:(vnode)=>{
+  // oncreate:(vnode)=>{
     // m.redraw()//when back is pressed
-  },
+  // },
   view:(vnode)=>{
     return [
       m("h5",m.route.param("urlB") == "new"?"New Location Entry":"Edit Location Entry"),
@@ -438,7 +441,7 @@ const locationForm = {
                       to: $("#locationInput2").val(), 
                       desc:"No Descriptions . . ."
                     })
-                    m.route.set("/u/location")
+                    m.route.set("/u/location", null)
                     /*window.location.assign('/#/u/location')*/     
               }else{
                   let temp = []

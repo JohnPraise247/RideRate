@@ -20,9 +20,6 @@ const Button = {
 
 
 
-
-
-
 const NavBar = {
 	view:(vnode)=>{
     vnode.state.view = (vnode.attrs.nav == "nav-small"?".nav-small":"")

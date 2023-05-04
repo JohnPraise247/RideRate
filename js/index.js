@@ -69,6 +69,7 @@ var Model ={
     transparent:true,
     sidebar:"",
     sidebarBtn:"",
+    // term:"",
     colorIndex:-1,//controls how colors are picked
     colorClasses:[".icon-blue",".icon-green",".icon-yellow",".icon-red"],
     locations:{
