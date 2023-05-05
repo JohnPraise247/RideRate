@@ -16,6 +16,7 @@
 /Popup Modal Box
 /node_modules
 /package.json
+/package-lock.json
 /.gitignore
 /index.js
 mithril.min.js
