@@ -31,12 +31,12 @@ a.list-group-item {
     min-width: 130px;
 }
 .btn-white{
-    color: #ddd;
+    color: #ddd!important;
 /*    background-color: #fff!important;*/
     border-color: #fff!important;
 }
 .btn-white:hover{
-    color: #eee;
+    color: #eee!important;
 }
 .btn-black{
     color: #ccc;
