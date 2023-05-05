@@ -1,0 +1,24 @@
+.bg-white{
+    background-color: #fff!important;
+}
+.bg-transparent{
+    background-color: transparent!important;
+}
+.text-white {
+    color: #fff!important;
+}
+nav .text-white:hover {
+    color: #3472F7!important;
+}
+.btn-transparent-50{
+    border-color: #ffffff99!important;
+    color: #ffffffaa;
+}
+
+.btn-transparent-50:hover, .btn-transparent-50:focus{
+    border-color: #ffffff88!important;
+    color: #ffffffcc!important;
+}
+.text-muted-2{
+    color: #8a8a8a;
+}

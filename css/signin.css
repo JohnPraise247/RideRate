@@ -1,0 +1,52 @@
+.bg .form-control{
+    border:transparent;
+}
+.form-group > input.form-control {
+    background: rgba(255,255,255,.1);
+    color: #fff!important;
+}
+.form-group > input.form-control:focus{
+    border:solid 1px #ffffff66 !important;
+}
+.form-group > input.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff88!important
+}
+.form-group > input.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ffffff88!important
+}
+.form-group > input.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ffffff88!important
+}
+.split{
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    margin-top: 10px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    color: #abb0f2;
+    width: auto;
+}
+.split > span {
+    display: inline-block;
+    position: relative;
+    font-size: 11px;
+}
+.split > span::before {
+    margin-right: 15px;
+    right: 100%;
+}
+.split > span::before, .split > span::after {
+    content: '';
+    border: 0;
+    border-top: 1px solid #585c93;
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+}
+.split > span::after {
+    left: 100%;
+    margin-left: 15px;
+}

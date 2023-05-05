@@ -7,7 +7,7 @@
 //COMPONENTS
 const ContainerAbsolute = {
   view:(vnode)=>{
-    return [// m(".container[style='transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;']",[
+    return [
       m(".container.container-absolute",[ 
         m("h2.title","RideRate"),
          m(".panel.p-4.bg-transparent",[
@@ -79,9 +79,6 @@ const NavBar = {
                       m("li"+(m.route.get() == "" || m.route.get() == "/"?".active":""), m("a[href='#']", "Home")),
                       m("li"+(m.route.get() == "/about"?".active":""), m("a[href='#/about']", "About")),
                       m("li"+(m.route.get() == "/contact-us"?".active":""), m("a[href='#/contact-us']", "Contact us"))
-                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("about")} }, "About")),
-                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("features")} }, "Features")),
-                      // m("li", m("a",{onclick:()=>{ window.scrollToAnchor("contact")} }, "Contact"))
                     ]),
                   m("ul.nav.navbar-nav.navbar-right",[
                     // m(m.route.Link, {href: "/page1"}, "Page 1"),
@@ -99,8 +96,7 @@ const NavBar = {
                 m("h1[data-aos='fade-in'][data-aos-delay='']","Ride Smarter,"),
                 m("h3[data-aos='fade-in'][data-aos-delay='400']","Not Harder with ", m("b","RideRate")),
                 m(".mt-5",[
-                  m("a.btn.btn-primary.btn-fill.m-3[data-aos='zoom-in'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"),
-                  // m("a.btn.btn-primary.btn-fill.m-3[href='#features']","Get Started"),
+                  m("a.btn.btn-primary.btn-fill.m-3[data-aos='zoom-in'][data-aos-delay='500']",{ onclick:()=>{ window.scrollToAnchor("about")}},"Learn more"/*"Get Started"*/),
                   m("a.btn.btn-white.m-3[data-aos='zoom-in'][data-aos-delay='700'][href='#/check-rates']","Check Rates")
                 ])
               ])
@@ -198,7 +194,7 @@ const Main = {
 
 
       //Mobile app download section
-      m("section.section-spacing.cta-section", 
+      m("section.section-spacing.blue-gradient", 
         m(".container", 
           m(".row.align-items-center",[
               m(".col-md-6.mr-auto.text-center.mb-5", 
@@ -244,7 +240,6 @@ const Footer = {
   view:()=>{
     return m("footer.footer", 
       m("div.container-fluid",[
-        m(".menu",
           m("nav", 
            m("ul.d-flex",[
              // m("li.mr-3", m("a[href='#']", " About us ")),
@@ -253,17 +248,13 @@ const Footer = {
              m("li.mr-3", m("a[href='#/tac']", " Terms & Conditions "))
              // m("li.mr-3", m("a[href='#']", " Contact us "))
           ])
-         )
         ),
           m("div.copyright",[
           m("span"," © 2023 "),
           m("a[href='/']", "RideRate"),
           m("span",", All Rights Reserved ")
         ]
-         )
-
-
-         
+         )  
       /*m("div.social-area.pull-right",[
           m("a.btn.btn-social.btn-facebook.btn-simple", m("i.fa.fa-facebook-square")),
           m("a.btn.btn-social.btn-twitter.btn-simple", m("i.fa.fa-twitter")),
@@ -271,8 +262,7 @@ const Footer = {
         ]
       ),*/
       
-    ]
-  )
-)
+      ])
+    )
   }
 }

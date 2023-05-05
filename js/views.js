@@ -285,6 +285,7 @@ const Dashboard = {
     ]), 
      m("section.main-section",[
      	  m(Nav),
+     	  // m("div.close-sidebar-overlay",{onclick:()=>{ Model.closeSidebar()}}),
       	m.route.param("urlA") == "dashboard"?m(SectionDashboard)
        :m.route.param("urlA") == "location"?m(SectionLocation)
        :m.route.param("urlA") == "parks"?m(SectionParks)

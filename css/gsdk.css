@@ -1208,7 +1208,7 @@ input.ct-red + span + label + span.switch-right {
     padding: 10px 15px;
     margin: 15px 3px; }
   .navbar .navbar-nav > li > a.btn {
-    margin: 15px 3px;
+    margin: 15px;
     padding: 8px 16px; }
   .navbar .navbar-nav > li > a.btn-round {
     margin: 16px 3px; }
