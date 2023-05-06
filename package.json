@@ -4,7 +4,7 @@
   "description": "Keeps you informed of the present vehicle prices for your travel needs.",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "fsbin emptyDir build && fsbin copy public build && webpack --config webpack.build.js",
+    "build": "fsbin emptyDir build && fsbin copy public ./ && webpack --config webpack.build.js",
     "clean": "fsbin emptyDir build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

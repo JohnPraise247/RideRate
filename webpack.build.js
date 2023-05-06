@@ -43,7 +43,7 @@ module.exports = {
   },
   output: {
     filename: "static/app.js",
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, ''),
     publicPath: "/",
   },
   // optimization: {
@@ -101,7 +101,7 @@ var html = `<!DOCTYPE html>
 `
 
 try {
-  fs.writeFileSync('build/index.html', html);
+  fs.writeFileSync('index.html', html);
    console.log("html file written successfully");
 } catch (err) {
   console.error(err);
@@ -109,13 +109,13 @@ try {
 
 
 try {
-  fs.writeFileSync('build/app.css', coutput.styles);
+  fs.writeFileSync('app.css', coutput.styles);
   console.log("CSS files has been minified");
 } catch (err) {
   console.error(err);
 }
 
-fs.rmdir('build/css', { recursive: true }, err => {
+fs.rmdir('css', { recursive: true }, err => {
   if (err) {
     throw err
   }
