@@ -1,0 +1,11 @@
+//Custom 404 errors
+ErrorDocument 404 https://johnpraise247.github.io/RideRate/
+
+//Prevent viewing of .htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+//Prevent directory listings
+Options All -Indexes
