@@ -10,23 +10,11 @@
   },
   "dependencies": {
     "clean-css": "^5.3.2",
-    "core-js": "^3.17.2",
-    "mithril": "^2.0.4",
-    "regenerator-runtime": "^0.13.9"
+    "mithril": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
-    "@babel/core": "^7.15.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
-    "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@babel/preset-env": "^7.15.4",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.7.3",
-    "css-minimizer-webpack-plugin": "^5.0.0",
     "dotenv": "^10.0.0",
     "fsbin": "^1.0.10",
-    "mini-css-extract-plugin": "^2.7.5",
-    "style-loader": "^3.3.2",
     "webpack": "^5.51.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.0"
