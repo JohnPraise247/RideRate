@@ -5,7 +5,7 @@ node_modules/
 # build/
 public/
 client/
-# client/index.js
+client/index.js
 
 # dotenv environment variables file
 .env

@@ -1,23 +1,33 @@
-// Babel has deprecated @babel/polyfill, and the following two imports are used for polyfills instead.
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
 import m from 'mithril';
-import { Auth, Model } from './model';
-import './components';
-import './dashboard';
+import { Auth } from './model';
 import  './bs';
-import { Home, 
-         CheckRates, 
-         ContactUs, 
-         About, 
-         PrivacyPolicy, 
-         Tac, 
-         Login, 
-         Signup, 
-         ForgotPwd,
-         Dashboard,
-         PageNotFound
-       } from './views';
+
+import { Home } from './views/home/home';
+import { CheckRates } from './views/check-rates/check-rates';
+import { About } from './views/about/about';
+import { ContactUs } from './views/contact-us/contact-us';
+import { Tac } from './views/tac/tac';
+import { PrivacyPolicy } from './views/privacy-policy/privacy-policy';
+import { Login } from './views/login/login';
+import { Signup } from './views/signup/signup';
+import { ForgotPwd } from './views/forgot-pwd/forgot-pwd';
+import { Error404 } from './views/404/404';
+import { Dashboard } from './views/dashboard/dashboard';
+
+
+ //Todo 
+
+//fix li hover for nav
+//fix route to redirect /u/ to /u/dashbaord
+//add auto suggest on input
+//no results found for location search...
+//add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+//style upload btn
+//Cookie add analytics consent   https://www.cookieyes.com/?utm_source=CYB&utm_medium=gdpr+cookie+consent+examples&utm_campaign=l1
+
+
+
+// import { Notifications } from './notification';
 // import '../public/css/bs.css';
 // import '../public/css/colors.css';
 // import '../public/css/dashboard.css';
@@ -27,6 +37,20 @@ import { Home,
 // import '../public/css/rates.css';
 // import '../public/css/sidebar.css';
 // import '../public/css/signin.css';
+
+// index.js
+// function load(file) {
+//     return m.request({
+//         method: "GET",
+//         url: file,
+//         extract: function(xhr) {
+//          // console.log(xhr.responseText)
+//          // var module = {};
+//          // return eval('var module = {};' + xhr.responseText + ';return module.exports;');
+//             return Function("var module = {};" + xhr.responseText + ";return module.exports;")
+//         }
+//     })
+// }
 
 
 m.route.prefix = '#'
@@ -55,7 +79,7 @@ m.route(document.body, "/", {
     "/u:404...": {onmatch: function() {
           return Auth.username != "" ? Dashboard : Login
         }},
-    "/:404...": PageNotFound
+    "/:404...": Error404
     // onmatch: function() {
     //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
     //         else return Home
