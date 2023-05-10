@@ -1,7 +1,6 @@
 import m from 'mithril';
 import { Auth } from './model';
 import  './bs';
-
 import { Home } from './views/home/home';
 import { CheckRates } from './views/check-rates/check-rates';
 import { About } from './views/about/about';
@@ -24,6 +23,7 @@ import { Dashboard } from './views/dashboard/dashboard';
 //add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 //style upload btn
 //Cookie add analytics consent   https://www.cookieyes.com/?utm_source=CYB&utm_medium=gdpr+cookie+consent+examples&utm_campaign=l1
+//add onbeforeunload="return myFunction()"  useful for when values are inputted without changes
 
 
 

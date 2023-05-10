@@ -1,6 +1,7 @@
 const fs = require('fs');
 const cleanCSS = require('clean-css');
 const coutput = new cleanCSS().minify([
+  "public/css/aos.css",
   "public/css/bs.css",
   "public/css/colors.css",
   "public/css/dashboard.css",
