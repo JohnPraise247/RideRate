@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { Auth } from './model';
+import { Auth, getCookie } from './model';
 import  './bs';
 import { Home } from './views/home/home';
 import { CheckRates } from './views/check-rates/check-rates';
@@ -7,6 +7,7 @@ import { About } from './views/about/about';
 import { ContactUs } from './views/contact-us/contact-us';
 import { Tac } from './views/tac/tac';
 import { PrivacyPolicy } from './views/privacy-policy/privacy-policy';
+import { CookiePolicy } from './views/cookie-policy/cookie-policy';
 import { Login } from './views/login/login';
 import { Signup } from './views/signup/signup';
 import { ForgotPwd } from './views/forgot-pwd/forgot-pwd';
@@ -24,6 +25,7 @@ import { Dashboard } from './views/dashboard/dashboard';
 //style upload btn
 //Cookie add analytics consent   https://www.cookieyes.com/?utm_source=CYB&utm_medium=gdpr+cookie+consent+examples&utm_campaign=l1
 //add onbeforeunload="return myFunction()"  useful for when values are inputted without changes
+//Fix navbar issues onback-->  
 
 
 
@@ -51,7 +53,8 @@ import { Dashboard } from './views/dashboard/dashboard';
 //         }
 //     })
 // }
-
+const signin = getCookie("signin");
+(signin == null || signin == "")? Auth.signin = false : Auth.signin = true
 
 m.route.prefix = '#'
 m.route(document.body, "/", {
@@ -60,6 +63,7 @@ m.route(document.body, "/", {
     "/contact-us": ContactUs,
     "/about": About,
     "/privacy-policy": PrivacyPolicy,
+    "/cookie-policy": CookiePolicy,
     "/tac": Tac,
     "/login": Login,
     "/signup": Signup,
@@ -71,13 +75,13 @@ m.route(document.body, "/", {
     //     },
     // },
     "/u/:urlA": {onmatch: function() {
-          return Auth.username != "" ? Dashboard : Login
+          return Auth.signin ? Dashboard : Login
         }},
     "/u/:urlA/:urlB": {onmatch: function() {
-          return Auth.username != "" ? Dashboard : Login
+          return Auth.signin ? Dashboard : Login
         }},
     "/u:404...": {onmatch: function() {
-          return Auth.username != "" ? Dashboard : Login
+          return Auth.signin ? Dashboard : Login
         }},
     "/:404...": Error404
     // onmatch: function() {
