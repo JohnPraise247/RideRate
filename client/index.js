@@ -1,4 +1,3 @@
-import m from 'mithril';
 import { Auth, getCookie } from './model';
 import  './bs';
 import { Home } from './views/home/home';

@@ -9,7 +9,9 @@ const port = 8020;
 const openBrowser = false;
 
 // inject envs
-let plugins = [];
+let plugins = [
+  new webpack.ProvidePlugin({m: "mithril"})
+];
 // let plugins = [new MiniCssExtractPlugin()];
 let envs = {};
 Object.keys(process.env).filter(key => key.startsWith('MITHRIL_')).forEach(key => {
@@ -33,7 +35,7 @@ module.exports = {
     app: app,
   },
   output: {
-    filename: "static/app.js",
+    filename: "static/bundle.min.js",
     path: path.resolve(__dirname, ''),
     publicPath: "/",
   },

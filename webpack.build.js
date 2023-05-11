@@ -24,7 +24,9 @@ const webpack = require('webpack');
 const createMap = false;
 
 // inject envs
-let plugins = [];
+let plugins = [
+  new webpack.ProvidePlugin({m: "mithril"})
+];
 // let plugins = [new MiniCssExtractPlugin()];
 let envs = {};
 Object.keys(process.env).filter(key => key.startsWith('MITHRIL_')).forEach(key => {
@@ -43,7 +45,7 @@ module.exports = {
     app: app,
   },
   output: {
-    filename: "static/app.js",
+    filename: "static/bundle.min.js",
     path: path.resolve(__dirname, ''),
     publicPath: "/",
   },
@@ -94,9 +96,7 @@ var html = `<!DOCTYPE html>
    </script>
 </head>
 <body>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="static/app.js"></script>
+<script src="static/bundle.min.js"></script>
 </body>
 </html>
 `
