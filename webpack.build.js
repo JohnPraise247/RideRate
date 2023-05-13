@@ -96,6 +96,10 @@ var html = `<!DOCTYPE html>
    </script>
 </head>
 <body>
+  <div class="spinner-container">
+    <div class="spinner-large"></div>
+    <span>Loading</span>
+  </div>
 <script src="static/bundle.min.js"></script>
 </body>
 </html>

@@ -12,3 +12,4 @@ client/index.js
 
 # log files
 *.log
+bg.css

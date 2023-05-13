@@ -1,5 +1,5 @@
 import { Auth, getCookie } from './model';
-import  './bs';
+import './bs';
 import { Home } from './views/home/home';
 import { CheckRates } from './views/check-rates/check-rates';
 import { About } from './views/about/about';
@@ -14,7 +14,7 @@ import { Error404 } from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
 
 
- //Todo 
+//Todo 
 
 //fix li hover for nav
 //fix route to redirect /u/ to /u/dashbaord
@@ -25,6 +25,7 @@ import { Dashboard } from './views/dashboard/dashboard';
 //Cookie add analytics consent   https://www.cookieyes.com/?utm_source=CYB&utm_medium=gdpr+cookie+consent+examples&utm_campaign=l1
 //add onbeforeunload="return myFunction()"  useful for when values are inputted without changes
 //Fix navbar issues onback-->  
+//Add reCAPTCHA
 
 
 
@@ -53,7 +54,7 @@ import { Dashboard } from './views/dashboard/dashboard';
 //     })
 // }
 const signin = getCookie("signin");
-(signin == null || signin == "")? Auth.signin = false : Auth.signin = true
+(signin == null || signin == "") ? Auth.signin = false: Auth.signin = true
 
 m.route.prefix = '#'
 m.route(document.body, "/", {
@@ -73,20 +74,26 @@ m.route(document.body, "/", {
     // $.getScript
     //     },
     // },
-    "/u/:urlA": {onmatch: function() {
-          return Auth.signin ? Dashboard : Login
-        }},
-    "/u/:urlA/:urlB": {onmatch: function() {
-          return Auth.signin ? Dashboard : Login
-        }},
-    "/u:404...": {onmatch: function() {
-          return Auth.signin ? Dashboard : Login
-        }},
+    "/u/:urlA": {
+        onmatch: function() {
+            return Auth.signin ? Dashboard : Login
+        }
+    },
+    "/u/:urlA/:urlB": {
+        onmatch: function() {
+            return Auth.signin ? Dashboard : Login
+        }
+    },
+    "/u:404...": {
+        onmatch: function() {
+            return Auth.signin ? Dashboard : Login
+        }
+    },
     "/:404...": Error404
-    // onmatch: function() {
-    //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
-    //         else return Home
-    //     }
+        // onmatch: function() {
+        //         if (!localStorage.getItem("auth-token")) m.route.set("/login")
+        //         else return Home
+        //     }
 });
 
 // setTimeout(()=>{
