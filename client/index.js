@@ -14,6 +14,9 @@ import Signup from './views/signup/signup';
 import ForgotPwd from './views/forgot-pwd/forgot-pwd';
 import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
+// import PocketBase from 'pocketbase';
+
+// const client = new PocketBase('http://127.0.0.1:8090');
 
 
 //Todo 
@@ -30,6 +33,8 @@ import { Dashboard } from './views/dashboard/dashboard';
 //Fix navbar issues onback-->  
 //Add reCAPTCHA
 //use gsdk validation class
+
+//admmin image <a href="https://www.freepik.com/free-vector/client-database-analysis-marketing-strategy-crm-planning-target-audience-research-expert-analyst-studying-end-user-preferences-profiles-vector-isolated-concept-metaphor-illustration_12083345.htm#query=admin%20illustration&position=11&from_view=search&track=ais">Image by vectorjuice</a> on Freepik
 
 
 
