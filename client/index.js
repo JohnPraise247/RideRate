@@ -1,16 +1,18 @@
 import { Auth, getCookie } from './model';
 import './bs';
-import { Home } from './views/home/home';
-import { CheckRates } from './views/check-rates/check-rates';
-import { About } from './views/about/about';
-import { ContactUs } from './views/contact-us/contact-us';
-import { Tac } from './views/tac/tac';
-import { PrivacyPolicy } from './views/privacy-policy/privacy-policy';
-import { CookiePolicy } from './views/cookie-policy/cookie-policy';
-import { Login } from './views/login/login';
-import { Signup } from './views/signup/signup';
-import { ForgotPwd } from './views/forgot-pwd/forgot-pwd';
-import { Error404 } from './views/404/404';
+import Admin from './views/admin/admin';
+import AdminLogin from './views/admin/login';
+import Home from './views/home/home';
+import CheckRates from './views/check-rates/check-rates';
+import About from './views/about/about';
+import ContactUs from './views/contact-us/contact-us';
+import Tac from './views/tac/tac';
+import PrivacyPolicy from './views/privacy-policy/privacy-policy';
+import CookiePolicy from './views/cookie-policy/cookie-policy';
+import Login from './views/login/login';
+import Signup from './views/signup/signup';
+import ForgotPwd from './views/forgot-pwd/forgot-pwd';
+import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
 
 
@@ -22,10 +24,12 @@ import { Dashboard } from './views/dashboard/dashboard';
 //no results found for location search...
 //add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 //style upload btn
+//work on cookie-policy page    
 //Cookie add analytics consent   https://www.cookieyes.com/?utm_source=CYB&utm_medium=gdpr+cookie+consent+examples&utm_campaign=l1
 //add onbeforeunload="return myFunction()"  useful for when values are inputted without changes
 //Fix navbar issues onback-->  
 //Add reCAPTCHA
+//use gsdk validation class
 
 
 
@@ -87,6 +91,21 @@ m.route(document.body, "/", {
     "/u:404...": {
         onmatch: function() {
             return Auth.signin ? Dashboard : Login
+        }
+    },
+    "/admin/:urlA": {
+        onmatch: function() {
+            return Auth.adminSignin ? Admin : AdminLogin
+        }
+    },
+    "/admin/:urlA/:urlB": {
+        onmatch: function() {
+            return Auth.adminSignin ? Admin : AdminLogin
+        }
+    },
+    "/admin:404...": {
+        onmatch: function() {
+            return Auth.adminSignin ? Admin : AdminLogin
         }
     },
     "/:404...": Error404

@@ -2,16 +2,18 @@ const fs = require('fs');
 const cleanCSS = require('clean-css');
 const coutput = new cleanCSS().minify([
   "public/css/aos.css",
+  "public/css/gsdk.css",
+  "public/css/index.css",
+  "public/css/sidebar.css",
   "public/css/bs.css",
   "public/css/colors.css",
   "public/css/dashboard.css",
-  "public/css/gsdk.css",
   "public/css/icon.css",
-  "public/css/index.css",
   "public/css/rates.css",
-  "public/css/sidebar.css",
   "public/css/signin.css"
 ]);
+
+
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
