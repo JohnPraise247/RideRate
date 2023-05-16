@@ -14,9 +14,6 @@ import Signup from './views/signup/signup';
 import ForgotPwd from './views/forgot-pwd/forgot-pwd';
 import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
-// import PocketBase from 'pocketbase';
-
-// const client = new PocketBase('http://127.0.0.1:8090');
 
 
 //Todo 
