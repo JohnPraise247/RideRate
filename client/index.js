@@ -17,6 +17,8 @@ import { Dashboard } from './views/dashboard/dashboard';
 
 
 //Todo 
+//wow, you can preload image
+//<link rel="preload" href="/images/testimonials/malak-profile.webp" as="image" type="image/webp">
 
 //fix li hover for nav
 //fix route to redirect /u/ to /u/dashbaord
@@ -30,7 +32,7 @@ import { Dashboard } from './views/dashboard/dashboard';
 //Fix navbar issues onback-->  
 //Add reCAPTCHA
 //use gsdk validation class
-//
+//create custom scrollbar for admin dashboard
 
 //admmin image <a href="https://www.freepik.com/free-vector/client-database-analysis-marketing-strategy-crm-planning-target-audience-research-expert-analyst-studying-end-user-preferences-profiles-vector-isolated-concept-metaphor-illustration_12083345.htm#query=admin%20illustration&position=11&from_view=search&track=ais">Image by vectorjuice</a> on Freepik
 
