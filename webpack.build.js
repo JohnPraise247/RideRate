@@ -1,8 +1,10 @@
 const fs = require('fs');
 const cleanCSS = require('clean-css');
 const coutput = new cleanCSS().minify([
+  "public/css/bootstrap.min.css",
   "public/css/aos.css",
   "public/css/gsdk.css",
+  "public/css/boxicons.min.css",
   "public/css/index.css",
   "public/css/sidebar.css",
   "public/css/bs.css",
@@ -80,12 +82,13 @@ var html = `<!DOCTYPE html>
    <!-- <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//apple-icon.png"> -->
    <link rel="icon" type="image/png" href="./favicon.png">
    <link rel="preconnect" href="fonts.gstatic.com">
-   <link rel="preconnect" href="https://unpkg.com">
-   <link href="//fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet"/>
-   <link rel="stylesheet" href="//unpkg.com/aos@next/dist/aos.css" />
-   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-   <link href='//unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   <link href="./app.css" rel="stylesheet"/>
+   <!-- <link rel="preconnect" href="netdna.bootstrapcdn.com">
+   <link rel="preload" href="./images/default.jpg" as="image" type="image/jpg">
+   <link rel="preload" href="./images/default_blur.png" as="image" type="image/jpg"> -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">
+   <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">-->
+   <link rel="stylesheet" href="./app.css">
+     
 
    <!-- Google tag (gtag.js) -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14WLRRD1SK"></script>
@@ -122,7 +125,7 @@ try {
   console.error(err);
 }
 
-fs.rmdir('css', { recursive: true }, err => {
+fs.rm('css', { recursive: true }, err => {
   if (err) {
     throw err
   }

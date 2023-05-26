@@ -1,5 +1,7 @@
-import { Auth, getCookie } from './model';
+import { Auth } from './model';
 import './bs';
+// import 'boxicons'//failed to work
+
 import Admin from './views/admin/admin';
 import AdminLogin from './views/admin/login';
 import Home from './views/home/home';
@@ -14,6 +16,7 @@ import Signup from './views/signup/signup';
 import ForgotPwd from './views/forgot-pwd/forgot-pwd';
 import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
+
 
 
 //Todo 
@@ -62,8 +65,14 @@ import { Dashboard } from './views/dashboard/dashboard';
 //         }
 //     })
 // }
-const signin = getCookie("signin");
-(signin == null || signin == "") ? Auth.signin = false: Auth.signin = true
+// const signin = getCookie("signin");
+// (signin == null || signin == "") ? Auth.signin = false : Auth.signin = true
+
+let pbExists = localStorage.getItem("pocketbase_auth")
+pbExists == null ? Auth.signin = false : Auth.signin = true
+// pb.authStore.clear();
+
+
 
 m.route.prefix = '#'
 m.route(document.body, "/", {
