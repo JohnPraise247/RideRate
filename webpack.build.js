@@ -81,11 +81,11 @@ var html = `<!DOCTYPE html>
 
    <!-- <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//apple-icon.png"> -->
    <link rel="icon" type="image/png" href="./favicon.png">
-   <link rel="preconnect" href="fonts.gstatic.com">
+   <!--<link rel="preconnect" href="fonts.gstatic.com">-->
    <!-- <link rel="preconnect" href="netdna.bootstrapcdn.com">
    <link rel="preload" href="./images/default.jpg" as="image" type="image/jpg">
    <link rel="preload" href="./images/default_blur.png" as="image" type="image/jpg"> -->
-   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">
+   <!--<link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">-->
    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">-->
    <link rel="stylesheet" href="./app.css">
      
@@ -103,7 +103,6 @@ var html = `<!DOCTYPE html>
 <body>
   <div class="spinner-container">
     <div class="spinner-large"></div>
-    <span>Loading</span>
   </div>
 <script src="static/bundle.min.js"></script>
 </body>

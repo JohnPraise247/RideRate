@@ -17,7 +17,7 @@ import ForgotPwd from './views/forgot-pwd/forgot-pwd';
 import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
 
-
+console.log("Solve admin error: cannot go from prev. only works right when going to dashboard")
 
 //Todo 
 //wow, you can preload image
