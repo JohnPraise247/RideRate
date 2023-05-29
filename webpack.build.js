@@ -16,6 +16,9 @@ const coutput = new cleanCSS().minify([
 ]);
 
 
+
+
+
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
@@ -118,11 +121,31 @@ try {
 
 
 try {
+  coutput.styles = coutput.styles.replaceAll("../images", "./images");
+  coutput.styles = coutput.styles.replaceAll("../fonts", "./fonts");
+  console.log("Replaced ../images and ../fonts to ./images & ./fonts in css file");
   fs.writeFileSync('app.css', coutput.styles);
   console.log("CSS files has been minified");
 } catch (err) {
   console.error(err);
 }
+
+// var replaceCSS;
+// try {
+//   replaceCSS = fs.readFileSync('app.css', 'utf8');
+//   replaceCSS = replaceCSS.replaceAll("../images", "./images");
+//   replaceCSS = replaceCSS.replaceAll("../fonts", "./fonts");
+//   console.log("Replaced ../images and ../fonts to ./images & ./fonts in css file");
+// } catch (err) {
+//   console.error(err);
+// }
+
+// try {
+//   fs.writeFileSync('app.css', replaceCSS);
+//   console.log("Written new index.css");
+// } catch (err) {
+//   console.error(err);
+// }
 
 fs.rm('css', { recursive: true }, err => {
   if (err) {
