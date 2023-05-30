@@ -84,10 +84,11 @@ var html = `<!DOCTYPE html>
 
    <!-- <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//apple-icon.png"> -->
    <link rel="icon" type="image/png" href="./favicon.png">
-   <!--<link rel="preconnect" href="fonts.gstatic.com">-->
-   <!-- <link rel="preconnect" href="netdna.bootstrapcdn.com">
+   <!--<link rel="preconnect" href="fonts.gstatic.com">
+   <link rel="preconnect" href="netdna.bootstrapcdn.com">-->
    <link rel="preload" href="./images/default.jpg" as="image" type="image/jpg">
-   <link rel="preload" href="./images/default_blur.png" as="image" type="image/jpg"> -->
+   <link rel="preload" href="./images/default_blur.png" as="image" type="image/jpg">
+   <link rel="preload" href="./images/bg.jpg" as="image" type="image/jpg"> 
    <!--<link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">-->
    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">-->
    <link rel="stylesheet" href="./app.css">
@@ -130,27 +131,9 @@ try {
   console.error(err);
 }
 
-// var replaceCSS;
-// try {
-//   replaceCSS = fs.readFileSync('app.css', 'utf8');
-//   replaceCSS = replaceCSS.replaceAll("../images", "./images");
-//   replaceCSS = replaceCSS.replaceAll("../fonts", "./fonts");
-//   console.log("Replaced ../images and ../fonts to ./images & ./fonts in css file");
-// } catch (err) {
-//   console.error(err);
-// }
-
-// try {
-//   fs.writeFileSync('app.css', replaceCSS);
-//   console.log("Written new index.css");
-// } catch (err) {
-//   console.error(err);
-// }
-
 fs.rm('css', { recursive: true }, err => {
   if (err) {
     throw err
   }
-
   console.log(`CSS fldr is deleted!`)
 })
