@@ -17,14 +17,20 @@ import ForgotPwd from './views/forgot-pwd/forgot-pwd';
 import Error404 from './views/404/404';
 import { Dashboard } from './views/dashboard/dashboard';
 
-console.log("Solve admin error: cannot go from prev. only works right when going to dashboard")
+console.error("Solve admin error: cannot go from prev. only works right when going to dashboard")
+/*$('html, body').animate({
+    scrollTop: $(hash).offset().top
+}, 800, function () {
+
+    // Add hash (#) to URL when done scrolling (default click behavior)
+    window.location.hash = hash;
+});*/
 
 //Todo 
 //wow, you can preload image
 //<link rel="preload" href="/images/testimonials/malak-profile.webp" as="image" type="image/webp">
 
 //fix li hover for nav
-//fix route to redirect /u/ to /u/dashbaord
 //add auto suggest on input
 //no results found for location search...
 //add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
@@ -132,10 +138,3 @@ m.route(document.body, "/", {
 // setTimeout(()=>{
 //   if(!navigator.onLine) document.write("Refresh page")
 // },0)
-
-// try {
-//   fs.writeFileSync('build/bundle.min.css', coutput.styles);
-//   console.log("CSS files has been minified");
-// } catch (err) {
-//   console.error(err);
-// }
